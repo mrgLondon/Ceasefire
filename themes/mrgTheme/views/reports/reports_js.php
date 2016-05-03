@@ -35,7 +35,10 @@
 	// Map object
 	var map = null;
 	var radiusMap = null;
-	
+
+	var permaMapSettings = null;
+
+
 	if (urlParameters.length == 0)
 	{
 		urlParameters = {};
@@ -175,7 +178,9 @@
 		/**
 		 * When the date filter button is clicked
 		 */
-		$("#tooltip-box a.filter-button").click(function(){
+		$("#tooltip-box a.filter-button").click(function(event){
+			event.preventDefault();
+
 			// Change the text
 			$(".time-period").text($("#report_date_from").val()+" to "+$("#report_date_to").val());
 			
@@ -229,7 +234,9 @@
 		attachFilterReportsAction();
 		
 		// When all the filters are reset
-		$("#reset_all_filters").click(function(){
+		$("#reset_all_filters").click(function(event){
+			event.preventDefault();
+
 			// Deselect all filters
 			$.each($(".filter-list li a"), function(i, item){
 				$(item).removeClass("selected");
@@ -252,13 +259,31 @@
 			{
 				if (typeof radiusMap == 'undefined' || radiusMap == null)
 				{
+					  // Default radius
+					  var radius = 20 * 1000; // 20km
+					  // Determind which settings to use.
+					  if(permaMapSettings != null
+						 && permaMapSettings.hasOwnProperty('radius')
+						 && permaMapSettings.hasOwnProperty('start_loc'))
+					  {
+					  
+					  var startLocLatlon = permaMapSettings['start_loc'].split(",");
+					  latitude           = startLocLatlon[0];
+					  longitude          = startLocLatlon[1];
+					  radius             = permaMapSettings['radius'] * 1000;
+					  }
+					  
+								  
 					// Create the map
 					radiusMap = createMap("divMap", latitude, longitude, defaultZoom);
 					
 					// Add the radius layer
-					addRadiusLayer(radiusMap, latitude, longitude);
-					
-					drawCircle(radiusMap, latitude, longitude);
+					  addRadiusLayer(radiusMap, latitude, longitude, radius);
+					  
+					  var radiusLayer = drawCircle(radiusMap, latitude, longitude, radius);
+					  
+					  // Zoom to the radius circle to make the map more legible
+					  radiusMap.zoomToExtent(radiusLayer.getDataExtent());
 					
 					// Detect map clicks
 					radiusMap.events.register("click", radiusMap, function(e){
@@ -269,7 +294,7 @@
 						markers.addMarker(m);
 
 						currRadius = $("#alert_radius option:selected").val();
-						radius = currRadius * 1000
+						radius = currRadius * 1000;
 
 						lonlat2.transform(proj_900913, proj_4326);
 
@@ -522,7 +547,58 @@
 		
 		return false;
 	}
-	
+
+<?php if(isset($_GET['filterParams'])) { ?>
+// See if we need to pre-setup the filters using the URL
+$(document).ready(function(){
+				  urlParameters = JSON.parse('<?php echo $_GET['filterParams']; ?>');
+				  
+				  var keyToFilter = {};
+				  keyToFilter['c']    = 'filter_link_cat_';
+				  keyToFilter['mode'] = 'filter_link_mode_';
+				  keyToFilter['m']    = 'filter_link_media_';
+				  keyToFilter['v']    = 'filter_link_verification_';
+				  <?php
+				  // Allows us to pre-select the filter when using permalinks
+				  Event::run('ushahidi_action.report_js_keyToFilter');
+				  ?>
+				  
+				  // The map is special, so we will use special logic in the loop
+				  keyToFilter['radius']    = 'map_radius';
+				  keyToFilter['start_loc'] = 'map_start_loc';
+				  
+				  var mapSettings = {};
+				  
+				  $.each(urlParameters, function(key, values) {
+						 if(keyToFilter.hasOwnProperty(key)) {
+						 // Set up map settings separate from the other ones
+						 if(keyToFilter[key] == 'map_radius') {
+						 mapSettings['radius'] = values;
+						 }else if(keyToFilter[key] == 'map_start_loc') {
+						 mapSettings['start_loc'] = values;
+						 }
+						 
+						 // Make selections
+						 $.each(urlParameters[key], function(k, v) {
+								$('#'+keyToFilter[key]+v).addClass('selected');
+								});
+						 }
+						 });
+				  
+				  if(mapSettings.hasOwnProperty('radius') && mapSettings.hasOwnProperty('start_loc')) {
+				  permaMapSettings = mapSettings;
+				  // Set radius dropdown
+				  $("#alert_radius").val(mapSettings['radius']);
+				  $('.openLocationFilter').click();
+				  
+				  }
+				  
+				  // Now get the correct reports
+				  fetchReports();
+				  });
+<?php } ?>
+
+
 	/**
 	 * Gets the reports using the specified parameters
 	 */
@@ -541,11 +617,15 @@
 					"</div>";
 	
 		$("#reports-box").html(statusHtml);
-		
 		// Check if there are any parameters
 		if ($.isEmptyObject(urlParameters))
 		{
-			urlParameters = {show: "all"}
+			urlParameters = {show: "all"};
+		}
+		// Save filter options to the URL so it can act as a permalink
+		if(history.pushState)
+		{
+			history.pushState(null, null, window.location.pathname+'?filterParams='+encodeURIComponent(JSON.stringify(urlParameters)));
 		}
 		
 		// Get the content for the new page
@@ -638,6 +718,12 @@
 				removeParameterItem("v", verification);
 				
 			}
+			
+			<?php
+			// Action, allows plugins to add custom filters
+			Event::run('ushahidi_action.report_js_filterReportsActionRemove');
+			?>
+			
 		}
 	}
 	
@@ -646,9 +732,10 @@
 	 */
 	function attachFilterReportsAction()
 	{
-		$("#applyFilters").click(function(){
-			
-			// 
+		$("#applyFilters").click(function(event){
+			event.preventDefault();
+
+			//
 			// Get all the selected categories
 			// 
 			var category_ids = [];

@@ -230,12 +230,28 @@ CREATE TABLE IF NOT EXISTS `category_lang` (
 CREATE TABLE IF NOT EXISTS `city` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `country_id` int(11) DEFAULT NULL,
+  `gov_id` int(11) DEFAULT NULL,
   `city` varchar(200) DEFAULT NULL,
   `city_lat` varchar(150) DEFAULT NULL,
   `city_lon` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `country_id` (`country_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Stores cities of countries retrieved by user.' AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+/**
+ * Table structure for table `city_lang`
+ *
+ */
+
+CREATE TABLE IF NOT EXISTS `city_lang` (
+  `id` bigint(20) unsigned NOT NULL,
+  `city` varchar(200) CHARACTER SET utf8 NOT NULL,
+  `locale` varchar(10) CHARACTER SET utf8 NOT NULL,
+   UNIQUE KEY `city_lang_primary` (`id`,`locale`), 
+   KEY `locale` (`locale`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -645,12 +661,12 @@ CREATE TABLE IF NOT EXISTS `feed_item_category` (
  * Table structure for table `form`
  *
  */
-
 CREATE TABLE IF NOT EXISTS `form` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `form_title` varchar(200) NOT NULL,
   `form_description` text,
   `form_active` tinyint(4) DEFAULT '1',
+  `locale` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `form_title` (`form_title`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Stores all report submission forms created(default+custom)' AUTO_INCREMENT=2 ;
@@ -1475,6 +1491,38 @@ CREATE TABLE IF NOT EXISTS `verified` (
   PRIMARY KEY (`id`),
   KEY `incident_id` (`incident_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Stores all verified reports' AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+/**
+ * Table structure for table `governorates`
+ *
+ */
+
+CREATE TABLE IF NOT EXISTS `governorates` (
+  `gov_id` bigint(20) unsigned NOT NULL,
+  `country_id` int(11) DEFAULT NULL,
+  `governorate` varchar(200) DEFAULT NULL,
+  `lat` varchar(150) DEFAULT NULL,
+  `lon` varchar(200) DEFAULT NULL,
+  `locale` varchar(200) DEFAULT 'en_GB'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Stores governorates of countries retrieved by user.';
+
+-- --------------------------------------------------------
+
+/**
+ * Table structure for table `governorates_lang`
+ *
+ */
+CREATE TABLE IF NOT EXISTS `governorates_lang` (
+  `gov_id` bigint(20) unsigned NOT NULL,
+  `country_id` int(11) DEFAULT NULL,
+  `governorate` varchar(200) DEFAULT NULL,
+  `locale` varchar(200) DEFAULT 'en_GB'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Stores governorate names in different languages';
+
+ALTER TABLE `governorates_lang`
+ ADD UNIQUE KEY `gov_id` (`gov_id`,`country_id`,`locale`), ADD UNIQUE KEY `gov_id_2` (`gov_id`,`country_id`,`locale`);
 
 /**
  * Version information for table `settings`

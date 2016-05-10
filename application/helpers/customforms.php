@@ -19,7 +19,8 @@ class customforms_Core {
 		$custom_forms = ORM::factory('form');
 		if ($active_only)
 		{
-			$custom_forms->where('form_active',1);
+			$locale = Kohana::config('locale.language.0');
+			$custom_forms->where('form_active',1)->where('locale',$locale);
 		}
 		return $custom_forms->find_all();
 	}

@@ -312,7 +312,11 @@ class map_Core {
 		$layer->openlayers = "Google";
 		$layer->title = 'Google Maps Normal';
 		$layer->description = 'Standard Google Maps Roads';
+                //google maps API key : AIzaSyD2ZAF9U3ZDVGFAycS1mveM1c2EIKX-LCY
+                //https://www.google.com/maps/embed/v1/MODE?key=AIzaSyD2ZAF9U3ZDVGFAycS1mveM1c2EIKX-LCY&parameters
+                //https://maps.googleapis.com/maps/api/js?key=AIzaSyD2ZAF9U3ZDVGFAycS1mveM1c2EIKX-LCY&callback=initMap    
 		$layer->api_url = 'https://maps.google.com/maps/api/js?v=3.7&amp;sensor=false&amp;language='.Kohana::config('locale.language.0');
+                //$layer->api_url = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyALUWLF436wImvYfkg5NAmGJUbbdz4muJw &maptype=roadmap &language=ar';//.Kohana::config('locale.language.0');
 		$layer->data = array(
 			'baselayer' => TRUE,
 			'type' => '',

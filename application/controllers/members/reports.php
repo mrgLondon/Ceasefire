@@ -290,7 +290,8 @@ class Reports_Controller extends Members_Controller {
 
 		//GET custom forms
 		$forms = array();
-		foreach (ORM::factory('form')->where('form_active',1)->find_all() as $custom_forms)
+                $locale = Kohana::config('locale.language.0');
+		foreach (ORM::factory('form')->where('form_active',1)->where('locale',$locale)->find_all() as $custom_forms)
 		{
 			$forms[$custom_forms->id] = $custom_forms->form_title;
 		}

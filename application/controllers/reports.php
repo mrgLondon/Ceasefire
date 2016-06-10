@@ -362,7 +362,9 @@ class Reports_Controller extends Main_Controller {
 
 		// Retrieve Country Cities
 		$default_country = Kohana::config('settings.default_country');
-		$this->template->content->cities = $this->_get_cities($default_country);
+		$this->template->content->governorates = $this->_get_governorates($default_country);
+                $this->template->content->cities = $this->_get_cities($default_country);
+                
 		$this->template->content->multi_country = Kohana::config('settings.multi_country');
 
 		$this->template->content->id = $id;
@@ -881,6 +883,28 @@ class Reports_Controller extends Main_Controller {
 		}
 	}
 
+        	/**
+	 * Retrieves governorates
+	 * @param int $country_id Id of the country whose governorates are to be fetched
+	 * @return array
+	 */
+	private function _get_governorates($country_id)
+	{
+		// Get the governorates
+		$governorates = (Kohana::config('settings.multi_country'))
+		    ? governorates_Model::get_all()
+		    : ORM::factory('country', $country_id)->get_governorates();
+
+		$governorates_select = array('' => Kohana::lang('ui_main.reports_select_gov'));
+
+		foreach ($governorates as $govornorate)
+		{
+			$governorates_select[$govornorate->gov_id.",".$govornorate->lon.",".$govornorate->lat] = $govornorate->governorate;
+		}
+
+		return $governorates_select;
+	}
+
 	/**
 	 * Retrieves Cities
 	 * @param int $country_id Id of the country whose cities are to be fetched
@@ -891,15 +915,14 @@ class Reports_Controller extends Main_Controller {
 		// Get the cities
 		$cities = (Kohana::config('settings.multi_country'))
 		    ? City_Model::get_all()
-		    : ORM::factory('country', $country_id)->get_cities();
+		    : ORM::factory('country', $country_id)->get_cities($locale = Kohana::config('locale.language.0'));
 
 		$city_select = array('' => Kohana::lang('ui_main.reports_select_city'));
 
 		foreach ($cities as $city)
 		{
-			$city_select[$city->city_lon.",".$city->city_lat] = $city->city;
+			$city_select[$city->gov_id.",".$city->city_lon.",".$city->city_lat] = $city->city;
 		}
-
 		return $city_select;
 	}
 

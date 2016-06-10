@@ -53,6 +53,7 @@ class Alerts_Controller extends Main_Controller {
 		$default_country = Kohana::config('settings.default_country');
 
 		// Retrieve Country Cities
+                $this->template->content->governorates = $this->_get_governorates($default_country);
 		$this->template->content->cities = $this->_get_cities($default_country);
 		
 		// Populate this for backwards compat

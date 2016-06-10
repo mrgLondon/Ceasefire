@@ -237,7 +237,7 @@ class form_Core {
 	 * @param   string        a string to be attached to the end of the attributes
 	 * @return  string
 	 */
-	public static function dropdown($data, $options = NULL, $selected = NULL, $extra = '')
+	public static function dropdown($data, $options = NULL, $selected = NULL, $extra = '', $optionsHidden = False)
 	{
 
 		if ( ! is_array($data))
@@ -286,15 +286,30 @@ class form_Core {
 					}
 
 					$sel = ($sel === TRUE) ? ' selected="selected"' : '';
-					$input .= '<option value="'.$inner_key.'"'.$sel.'>'.$inner_val.'</option>'."\n";
+                                        if ($optionsHidden === TRUE) {
+                                            $input .= '<span> <option value="'.$inner_key.'"'.$sel.'>'.$inner_val.'</option> </span>'."\n";
+                                        } else {
+                                            $input .= '<option value="'.$inner_key.'"'.$sel.'>'.$inner_val.'</option>'."\n";
+                                        }
 				}
 				$input .= '</optgroup>'."\n";
 			}
 			else
-			{
-				$sel = ($selected === $key) ? ' selected="selected"' : '';
-				$input .= '<option value="'.$key.'"'.$sel.'>'.$val.'</option>'."\n";
-			}
+                        {
+                            $sel = ($selected === $key) ? ' selected="selected"' : '';
+                            //$hide = ($optionsHidden === TRUE && $selected != $key) ? 'True':'False';
+                            //$input .= '<option hidden = "'.$hide.'" value="'.$key.'"'.$sel.'>'.$val.'</option>'."\n";
+
+                            if ($optionsHidden === TRUE && $selected != $key) {
+
+                                $input .= '<option hidden value="'.$key.'"'.$sel.'>'.$val.'</option>'."\n";
+
+                            } else {
+                                //$input .= '<option value="t"> Hello6 </option>'."\n";
+                                $input .= '<option value="'.$key.'"'.$sel.'>'.$val.'</option>'."\n";
+
+                            }
+                        }
 		}
 		$input .= '</select>';
 

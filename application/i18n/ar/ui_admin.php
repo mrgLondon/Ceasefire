@@ -316,4 +316,5 @@ $lang = array(
 	'xml' => 'XML',
 	'yes' => 'نعم',
 	'your_search_for' => 'بحثك عن',
+        'Flexibledate_field' => 'حقل تاريخ مفصل',
 );

@@ -326,4 +326,5 @@ $lang = array(
 	'user_no_logins' => 'Number of logins',
 	'user_last_login' => 'Last login',
 	'user_confirmed_account' => 'Confirmed account?',
+        'Flexibledate_field' => 'Custom date field',
 );

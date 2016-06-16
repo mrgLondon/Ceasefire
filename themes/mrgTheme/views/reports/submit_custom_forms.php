@@ -77,6 +77,76 @@
 			}
 			echo "</div>";
 		}
+		elseif ($field_property['field_type'] == 10) //my new custom Flexibledate field type
+		{
+			// Flexible date field
+			echo "<div class=\"report_row\" id=\"custom_field_row_" . $field_id ."\">";
+
+			$field_options = customforms::get_custom_field_options($field_id);
+
+			if (isset($field_options['field_hidden']) AND !isset($editor))
+			{
+				if($field_options['field_hidden'] == 1)
+				{
+                                    echo form::hidden($field_property['field_name'], $field_value);
+				}
+				else
+				{
+					echo "<h4>" . $field_property['field_name'] . $isrequired . " " . $isprivate . "</h4>";
+					echo form::input('custom_field['.$field_id.']', $field_value, $id_name .' class="text custom_text"');
+				}
+			}
+			else
+			{
+				echo "<h4>" . $field_property['field_name'] . $isrequired . " " . $isprivate . "</h4>";
+				echo form::input('custom_field['.$field_id.']', $field_value, $id_name .' class="text custom_text"');
+			}
+                        echo "<h4>" . $field_property['field_name'] . $isrequired . " " . $isprivate . "</h4>";
+                        echo "D: <select onchange='changeDate".$field_id."()' name='day".$field_id."' value='00'>Day<option value='00'>--</option> <option value='01'>1</option><option value='02'>2</option><option value='03'>3</option><option value='04'>4</option><option value='05'>5</option><option value='06'>6</option><option value='07'>7</option><option value='08'>8</option><option value='09'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option><option value='13'>13</option><option value='14'>14</option><option value='15'>15</option><option value='16'>16</option><option value='17'>17</option><option value='18'>18</option><option value='19'>19</option><option value='20'>20</option><option value='21'>21</option><option value='22'>22</option><option value='23'>23</option><option value='24'>24</option><option value='25'>25</option><option value='26'>26</option><option value='27'>27</option><option value='28'>28</option><option value='29'>29</option><option value='30'>30</option><option value='31'>31</option></select>";
+                        echo "M: <select onchange='changeDate".$field_id."()' name='month".$field_id."' value='00'>Month<option value='00'>--</option>  <option value='01'>January</option><option value='02'>February</option><option value='03'>March</option><option value='04'>April</option><option value='05'>May</option><option value='06'>June</option><option value='07'>July</option><option value='08'>August</option><option value='09'>September</option><option value='10'>October</option><option value='11'>November</option><option value='12'>December</option></select>";
+                        echo "Y: <select onchange='changeDate".$field_id."()' name='year".$field_id."' value='0000'>Year<option value='0000'>--</option>";
+                        for ($x = date("Y")-90; $x <= date("Y"); $x++) {
+                            echo "<option value='".$x."'>".$x."</option> ";
+                        }
+                        echo "</select> ";
+
+                        echo "<script type='text/javascript'>
+                            //alert('starting');    
+                            function changeDate2".$field_id."(){
+                                alert('changeDate2');
+                                var dd = document.getElementsByName('day".$field_id."')[0];
+                                var mm = document.getElementsByName('month".$field_id."')[0];
+                                var yy = document.getElementsByName('year".$field_id."')[0];    
+                                var fulldate = document.getElementsByName('custom_field[".$field_id."]')[0].value;
+                                var t = str(fulldate).split('/');
+                                dd.value = t[0];
+                                mm.value = t[1];
+                                yy.value = t[2];
+                                } 
+
+                            function changeDate".$field_id."(){
+                                var dd = document.getElementsByName('day".$field_id."')[0].value;
+                                var mm = document.getElementsByName('month".$field_id."')[0].value;
+                                var yy = document.getElementsByName('year".$field_id."')[0].value;    
+                                //alert(dd+'/'+mm+'/'+yy)    
+                                var fulldate = document.getElementsByName('custom_field[".$field_id."]')[0];    
+                                fulldate.value = dd+'/'+mm+'/'+yy;
+                                //alert(dd+'/'+mm+'/'+yy)
+                                }
+                            //alert('".$field_value."');    
+                            
+                            var dd = document.getElementsByName('day".$field_id."')[0];
+                            var mm = document.getElementsByName('month".$field_id."')[0];
+                            var yy = document.getElementsByName('year".$field_id."')[0];    
+                            var t = '".$field_value."'.split('/');
+                            dd.value = t[0];
+                            mm.value = t[1];
+                            yy.value = t[2];
+
+                            </script>";
+
+			echo "</div>";
+		}
 		elseif ($field_property['field_type'] == 3)
 		{ // Date Field
 			echo "<div class=\"report_row\" id=\"custom_field_row_" . $field_id ."\">";

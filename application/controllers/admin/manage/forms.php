@@ -159,6 +159,8 @@ class Forms_Controller extends Admin_Controller {
 			7 => Kohana::lang('ui_admin.dropdown_field'),
 			8 => Kohana::lang('ui_admin.divider_start_field'),
 			9 => Kohana::lang('ui_admin.divider_end_field'),
+                        10 => Kohana::lang('ui_admin.Flexibledate_field'),
+
 			// 4 => 'Add Attachments'
 		);
 		
@@ -206,6 +208,9 @@ class Forms_Controller extends Admin_Controller {
 			        break;
 			    case 1:
 			        $selector_content = $this->_get_selector_text($form_id, $field_id);
+			        break;
+			    case 10:
+			        $selector_content = $this->_get_selector_Flexibledate($form_id, $field_id);
 			        break;
 			    case 2:
 			        $selector_content = $this->_get_selector_textarea($form_id, $field_id);
@@ -869,6 +874,98 @@ class Forms_Controller extends Admin_Controller {
 		// is_public additions by george
 		$html .= $this->_get_public_state($field_ispublic_submit, $field_ispublic_visible);
 		
+		$html .="<div style=\"clear:both;\"></div>";
+		$html .="<div class=\"forms_item\">";
+		$html .="	<div id=\"form_loading_".$form_id."\" class=\"forms_fields_loading\"></div>";
+		$html .="<input type=\"submit\" class=\"save-rep-btn\" value=\"".Kohana::lang('ui_main.save')."\" />";
+		$html .="</div>";
+		$html .="<div style=\"clear:both;\"></div>";
+		$html .=$this->_get_selector_js($form_id);
+		
+		return $html;	
+	}
+
+        /**
+	* Generate splitted Date Field Entry Form
+    * @param int $form_id The id no. of the form
+    * @param int $field_id The id no. of the field
+    */
+	private function _get_selector_Flexibledate($form_id = 0, $field_id = 0)
+	{
+		if (intval($field_id) > 0)
+		{
+			$field = ORM::factory('form_field', $field_id);
+			if ($field->loaded == TRUE)
+			{
+				$field_name = $field->field_name;
+				$field_default = $field->field_default;
+				$field_required = $field->field_required;
+				$field_width = $field->field_width;
+				$field_height = $field->field_height;
+				$field_maxlength = $field->field_maxlength;
+				$field_isdate = $field->field_isdate;
+				$field_ispublic_visible = $field->field_ispublic_visible;
+				$field_ispublic_submit = $field->field_ispublic_submit;
+			}
+		}
+		else
+		{
+			$field_id = "";
+			$field_name = "";
+			$field_default = "";
+			$field_required = "0";
+			$field_width = "";
+			$field_height = "";
+			$field_maxlength = "";
+			$field_isdate = "0";
+			$field_ispublic_visible = "0";
+			$field_ispublic_submit = "0";
+		}
+		
+		$html = "";
+		$html .="<input type=\"hidden\" name=\"form_id\" id=\"form_id\" value=\"".$form_id."\">";
+		$html .="<input type=\"hidden\" name=\"field_id\" id=\"field_id\" value=\"".$field_id."\">";
+		$html .="<div id=\"form_result_".$form_id."\" class=\"forms_fields_result\"></div>";
+		$html .="<div class=\"forms_item\">"; 
+		$html .="	<strong>".Kohana::lang('ui_admin.field_name').":</strong><br />"; 
+		$html .= 	form::input('field_name', $field_name, ' class="text"');
+		$html .="</div>"; 
+		$html .="<div class=\"forms_item\">"; 
+		$html .="	<strong>".Kohana::lang('ui_admin.field_default').":</strong><br />"; 
+		$html .= 	form::input('field_default', $field_default, ' class="text"');
+		$html .="</div>"; 
+		$html .="<div class=\"forms_item\">"; 
+		$html .="	<strong>".Kohana::lang('ui_admin.required').":</strong><br />";
+		if ($field_required != 1)
+		{
+			$html .= 	Kohana::lang('ui_admin.yes')." " . form::radio('field_required', '1', FALSE) . "&nbsp;&nbsp;";
+			$html .= 	Kohana::lang('ui_admin.no')." " . form::radio('field_required', '0', TRUE);
+		}
+		else
+		{
+			$html .= 	Kohana::lang('ui_admin.yes')." " . form::radio('field_required', '1', TRUE) . "&nbsp;&nbsp;";
+			$html .= 	Kohana::lang('ui_admin.no')." " . form::radio('field_required', '0', FALSE);
+		}
+		$html .="</div>";
+		
+		// is_public additions by george
+		$html .= $this->_get_public_state($field_ispublic_submit, $field_ispublic_visible);
+
+                //hidden options
+		$hidden_default = '0';
+		$hidden_check = ORM::factory('form_field_option')->where('form_field_id',$field_id)->where('option_name','field_hidden')->find();
+		if($hidden_check->loaded == TRUE)
+			$hidden_default = $hidden_check->option_value;
+
+		$hidden_options = array(
+			'0' => Kohana::lang('ui_main.no'),
+			'1' => Kohana::lang('ui_main.yes')
+		);
+		$html .="<div class=\"forms_item\">"; 
+		$html .="<strong>" . Kohana::lang('ui_admin.field_hidden') . ":</strong><br />";
+		$html .= form::dropdown('field_options[field_hidden]',$hidden_options, $hidden_default);
+		$html .="</div>";
+                
 		$html .="<div style=\"clear:both;\"></div>";
 		$html .="<div class=\"forms_item\">";
 		$html .="	<div id=\"form_loading_".$form_id."\" class=\"forms_fields_loading\"></div>";

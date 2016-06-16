@@ -448,6 +448,7 @@
 			// Date Picker JS
 			$("#incident_date").datepicker({ 
 			    showOn: "both", 
+                            dateFormat: "dd/mm/yy",
 			    buttonImage: "<?php echo url::file_loc('img') ?>media/img/icon-calendar.gif", 
 			    buttonImageOnly: true 
 			});

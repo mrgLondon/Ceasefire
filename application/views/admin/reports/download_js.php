@@ -17,12 +17,14 @@
 		$(document).ready(function() {
 			$("#from_date").datepicker({ 
 				showOn: "both", 
+                                dateFormat: "dd/mm/yy",
 				buttonImage: "<?php echo $calendar_img; ?>", 
 				buttonImageOnly: true 
 			});
 			
 			$("#to_date").datepicker({ 
 				showOn: "both", 
+                                dateFormat: "dd/mm/yy",
 				buttonImage: "<?php echo $calendar_img; ?>", 
 				buttonImageOnly: true 
 			});
@@ -67,10 +69,10 @@
 						range: "<?php echo addslashes(Kohana::lang('report.data_include.between'));?>"
 					},
 					from_date: {
-						date: "<?php echo addslashes(Kohana::lang('report.from_date.date_mmddyyyy'));?>"
+						date: "<?php echo addslashes(Kohana::lang('report.from_date.date_ddmmyyyy'));?>"
 					},
 					to_date: {
-						date: "<?php echo addslashes(Kohana::lang('report.to_date.date_mmddyyyy'));?>"
+						date: "<?php echo addslashes(Kohana::lang('report.to_date.date_ddmmyyyy'));?>"
 					}
 				},
 				errorPlacement: function(error, element) {

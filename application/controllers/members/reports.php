@@ -252,7 +252,7 @@ class Reports_Controller extends Members_Controller {
 		//$form['latitude'] = Kohana::config('settings.default_lat');
 		//$form['longitude'] = Kohana::config('settings.default_lon');
 		$form['country_id'] = Kohana::config('settings.default_country');
-		$form['incident_date'] = date("m/d/Y",time());
+		$form['incident_date'] = date("d/m/Y",time());
 		$form['incident_hour'] = date('h');
 		$form['incident_minute'] = date('i');
 		$form['incident_ampm'] = date('a');
@@ -424,7 +424,7 @@ class Reports_Controller extends Members_Controller {
 						'locale' => $incident->locale,
 						'incident_title' => $incident->incident_title,
 						'incident_description' => $incident->incident_description,
-						'incident_date' => date('m/d/Y', strtotime($incident->incident_date)),
+						'incident_date' => date('d/m/Y', strtotime($incident->incident_date)),
 						'incident_hour' => date('h', strtotime($incident->incident_date)),
 						'incident_minute' => date('i', strtotime($incident->incident_date)),
 						'incident_ampm' => date('a', strtotime($incident->incident_date)),
@@ -601,6 +601,7 @@ class Reports_Controller extends Members_Controller {
 				$(document).ready(function() {
 				$(\"#incident_date\").datepicker({
 				showOn: \"both\",
+                                dateFormat: \"dd/mm/yy\",
 				buttonImage: \"" . url::base() . "media/img/icon-calendar.gif\",
 				buttonImageOnly: true
 				});
@@ -676,6 +677,7 @@ class Reports_Controller extends Members_Controller {
 							$(document).ready(function() {
 							$(\"#custom_field_".$field_property['field_id']."\").datepicker({
 							showOn: \"both\",
+                                                        dateFormat: \"dd/mm/yy\",
 							buttonImage: \"" . url::base() . "media/img/icon-calendar.gif\",
 							buttonImageOnly: true
 							});

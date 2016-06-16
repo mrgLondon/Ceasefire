@@ -26,8 +26,8 @@ class download_Core {
 				->add_rules('data_active.*','required','numeric','between[0,1]')
 				->add_rules('data_verified.*','required','numeric','between[0,1]')
 				->add_rules('data_include.*','numeric','between[1,7]')
-				->add_rules('from_date','date_mmddyyyy')
-				->add_rules('to_date','date_mmddyyyy');
+				->add_rules('from_date','date_ddmmyyyy')
+				->add_rules('to_date','date_ddmmyyyy');
 				
 		// Validate the report dates
 			// TO Date not greater than FROM Date?

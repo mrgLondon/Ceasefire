@@ -80,7 +80,7 @@ class Swiftriver_Report_Api_Object extends Api_Object_Core {
             // Add some rules, the input field, followed by a list of checks, carried out in order
             $post->add_rules('incident_title','required', 'length[3,200]');
             $post->add_rules('incident_description','required');
-            $post->add_rules('incident_date','required','date_mmddyyyy');
+            $post->add_rules('incident_date','required','date_ddmmyyyy');
             $post->add_rules('incident_hour','required','between[0,23]');
             //$post->add_rules('incident_minute','required','between[0,59]');
 

@@ -20,7 +20,6 @@ class City_Model extends ORM
 	
 	// Database table name
 	protected $table_name = 'city';
-
 	/**
 	 * Gets all the cities
 	 */

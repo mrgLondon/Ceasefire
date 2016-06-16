@@ -119,7 +119,7 @@
 
 							<div class="row">
 								<h4><?php echo Kohana::lang('ui_admin.user_last_login');?></h4>
-								<p class="bold_desc"><?php echo date("m/d/Y g:ia", $user->last_login); ?> <?php echo date_default_timezone_get(); ?></p>
+								<p class="bold_desc"><?php echo date("d/m/Y g:ia", $user->last_login); ?> <?php echo date_default_timezone_get(); ?></p>
 							</div>
 
 							<div class="row">

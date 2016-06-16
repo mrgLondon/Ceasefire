@@ -113,7 +113,7 @@ $(document).ready(function() {
 	$('#action_specific_days_calendar')
 		.datePicker(
 			{
-				startDate:'2000/01/01', // date obviously in the past
+				startDate:'01/01/2010', // date obviously in the past
 				inline:true,
 				selectMultiple:true
 			}
@@ -412,7 +412,7 @@ $(document).ready(function() {
 						<input type="hidden" name="form_action" id="form_action" value="a"/>
 
 						<div style="float:right;padding:25px 25px 0 0;text-align:right;">
-							<?php echo Kohana::lang('ui_admin.server_time').' '.date("m/d/Y H:i:s",time()).' ('.$site_timezone.')'; ?><br/>
+							<?php echo Kohana::lang('ui_admin.server_time').' '.date("d/m/Y H:i:s",time()).' ('.$site_timezone.')'; ?><br/>
 							<a href="<?php echo url::site(); ?>admin/settings/site"><small><?php echo Kohana::lang('ui_admin.modify_timezone'); ?></small></a>
 						</div>
 

@@ -77,53 +77,6 @@
 			}
 			echo "</div>";
 		}
-		elseif ($field_property['field_type'] == 2)
-		{
-			// TextArea Field
-			$field_options = customforms::get_custom_field_options($field_id);
-			if (isset($field_options['field_datatype']))
-			{
-				$extra_fields = $id_name . ' class="textarea custom_text" rows="3"';
-
-				if ($field_options['field_datatype'] == 'text')
-				{
-					echo "<div class=\"report_row\" id=\"custom_field_row_" . $field_id ."\">";
-					echo "<h4>" . $field_property['field_name'] . $isrequired . " " . $isprivate . "</h4>";
-					echo form::textarea('custom_field['.$field_id.']', $field_value, $extra_fields);
-					echo "</div>";
-				}
-
-				if ($field_options['field_datatype'] == 'markup')
-				{
-					echo "<div class=\"report_row\" id=\"custom_field_row_" . $field_id ."\">";
-					echo "<h4>" . $field_property['field_name'] . $isrequired . " " . $isprivate . "</h4>";
-					echo form::textarea('custom_field['.$field_id.']', $field_value, $extra_fields, false);
-					echo "</div>";
-				}
-
-				if ($field_options['field_datatype'] == 'javascript')
-				{
-					if(isset($editor))
-					{
-						echo "<div class=\"report_row\" id=\"custom_field_row_" . $field_id ."\">";
-						echo "<h4>" . $field_property['field_name'] . $isrequired . " " . $isprivate . "</h4>";
-						echo form::textarea('custom_field['.$field_id.']', $field_value, $extra_fields, false);
-						echo "</div>";
-					}
-					else
-					{
-						echo '<script type="text/javascript">' . $field_property['field_default'] . '</script>';
-					}
-				}
-			}
-			else
-			{
-				echo "<div class=\"report_row\" id=\"custom_field_row_" . $field_id ."\">";
-				echo "<h4>" . $field_property['field_name'] . $isrequired . " " . $isprivate . "</h4>";
-				echo form::textarea('custom_field['.$field_id.']', $field_value, $id_name .' class="textarea custom_text" rows="3"');
-				echo "</div>";
-			}
-		}
 		elseif ($field_property['field_type'] == 3)
 		{ // Date Field
 			echo "<div class=\"report_row\" id=\"custom_field_row_" . $field_id ."\">";
@@ -133,6 +86,24 @@
 				$(document).ready(function() {
 				$(\"#custom_field_".$field_id."\").datepicker({
 				showOn: \"both\",
+                                dateFormat: \"dd/mm/yy\",
+				buttonImage: \"".url::file_loc('img')."media/img/icon-calendar.gif\",
+				buttonImageOnly: true
+				});
+				});
+			</script>";
+			echo "</div>";
+		}
+		elseif ($field_property['field_type'] == 4)
+		{ // Date Field
+			echo "<div class=\"report_row\" id=\"custom_field_row_" . $field_id ."\">";
+			echo "<h4>" . $field_property['field_name'] . $isrequired . " " . $isprivate . "</h4>";
+			echo form::input('custom_field['.$field_id.']', $field_value, ' id="custom_field_'.$field_id.'" class="text"');
+			echo "<script type=\"text/javascript\">
+				$(document).ready(function() {
+				$(\"#custom_field_".$field_id."\").datepicker({
+				showOn: \"both\",
+                                dateFormat: \"dd/mm/yy\",
 				buttonImage: \"".url::file_loc('img')."media/img/icon-calendar.gif\",
 				buttonImageOnly: true
 				});

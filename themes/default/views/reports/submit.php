@@ -73,7 +73,8 @@
 								$("#incident_date").datepicker({ 
 									showOn: "both", 
 									buttonImage: "<?php echo url::file_loc('img'); ?>media/img/icon-calendar.gif", 
-									buttonImageOnly: true 
+									buttonImageOnly: true,
+                                                                        dateFormat: "dd/mm/yy"
 								});
 							});
 						</script>
@@ -327,7 +328,7 @@
 				</div>
 									
 				<div class="report_row">
-					<input name="submit" type="submit" value="<?php echo Kohana::lang('ui_main.reports_btn_submit'); ?>" class="btn_submit" /> 
+					<input name="submit" onclick="return confirm('<?php echo Kohana::lang('ui_main.action_confirm'); ?>');" type="submit" value="<?php echo Kohana::lang('ui_main.reports_btn_submit'); ?>" class="btn_submit" /> 
 				</div>
 			</div>
 		</div>

@@ -266,9 +266,9 @@ class customforms_Core {
 			if ($field_param->field_type == 3 AND $field_response != "")
 			{
 				$field_default = $field_param->field_default;
-				if ( ! valid::date_mmddyyyy($field_response))
+				if ( ! valid::date_ddmmyyyy($field_response))
 				{
-					$post->add_error('custom_field', 'date_mmddyyyy', array($custom_name));
+					$post->add_error('custom_field', 'date_ddmmyyyy', array($custom_name));
 				}
 			}
 

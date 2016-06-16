@@ -93,7 +93,7 @@ class Form_Field_Model extends ORM {
 		// If date field, and default value is not empty, add date validation rules
 		if ( ! empty($array->field_default) AND !empty($array->field_isdate))
 		{
-			$array->add_rules('field_default', array('valid', 'date_mmddyyyy'));
+			$array->add_rules('field_default', array('valid', 'date_ddmmyyyy'));
 		}
 
 		// Return

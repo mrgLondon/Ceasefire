@@ -282,7 +282,7 @@ class Themes_Core {
 				    '". Kohana::lang('datetime.december.abbv') ."'
 				];
 				Date.firstDayOfWeek = 1;
-				Date.format = 'mm/dd/yyyy';
+				Date.format = 'dd/mm/yyyy';
 			",'locale-dates');
 	
 			Requirements::js('media/js/jquery.datePicker.js');

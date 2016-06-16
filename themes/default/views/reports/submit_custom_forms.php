@@ -132,6 +132,7 @@
 				$(document).ready(function() {
 				$(\"#custom_field_".$field_id."\").datepicker({
 				showOn: \"both\",
+                                dateFormat: \"dd/mm/yy\",
 				buttonImage: \"".url::file_loc('img')."media/img/icon-calendar.gif\",
 				buttonImageOnly: true
 				});

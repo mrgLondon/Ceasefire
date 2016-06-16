@@ -193,7 +193,7 @@ class Private_Func_Api_Object extends Api_Object_Core {
                     'length[6,20]');
             $post->add_rules('message_description', 'required', 
                     'length[3,300]');
-            $post->add_rules('message_date', 'date_mmddyyyy');
+            $post->add_rules('message_date', 'date_ddmmyyyy');
 
             // Test to see if things passed the rule checks
             if ($post->validate())

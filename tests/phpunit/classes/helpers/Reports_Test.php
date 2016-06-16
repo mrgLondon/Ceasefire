@@ -8,7 +8,7 @@ class Reports_Helper_Test extends PHPUnit_Framework_TestCase {
 		(
 			'incident_title' => 'Test incident title',
 			'incident_description' => 'Testing reports helper for validation and saving of reports',
-			'incident_date' => date("m/d/Y",time()),
+			'incident_date' => date("d/m/Y",time()),
 			'incident_hour' => date('g'),
 			'incident_minute' => date('i'),
 			'incident_ampm' => date('a'),

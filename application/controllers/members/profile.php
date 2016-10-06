@@ -72,7 +72,7 @@ class Profile_Controller extends Members_Controller
 			// If Password field is not blank
 			if ( ! empty($post->new_password))
 			{
-				$post->add_rules('new_password','required','length['.kohana::config('auth.password_length').']','matches[password_again]');	
+				$post->add_rules('new_password','required','length['.kohana::config('auth.password_length').']','matches[password_again]','strong_password[new_password]');
 			}
 			//for plugins that want to know what the user had to say about things
 			Event::run('ushahidi_action.profile_post_member', $post);
@@ -101,6 +101,7 @@ class Profile_Controller extends Members_Controller
 					$user->name = $post->name;
 					$user->email = $post->email;
 					$user->notify = $post->notify;
+                                        $user->active = $post->active;
 					$user->public_profile = $post->public_profile;
 					$user->color = $post->color;
 					$user->needinfo = $needinfo;
@@ -153,6 +154,7 @@ class Profile_Controller extends Members_Controller
 			$form['name'] = $user->name;
 			$form['email'] = $user->email;
 			$form['notify'] = $user->notify;
+                        $form['active'] = $user->active;
 			$form['public_profile'] = $user->public_profile;
 			$form['color'] = $user->color;
 		}

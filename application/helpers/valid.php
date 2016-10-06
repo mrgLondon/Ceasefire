@@ -254,6 +254,22 @@ class valid_Core {
 	}
 
 	/**
+	 * Checks whether a string consists of Capital and small alphabetical characters, numbers, and special characters.
+	 *
+	 * @param   string   input string
+	 * @param   boolean  trigger UTF-8 compatibility
+	 * @return  boolean
+	 */
+	public static function strong_password($str, $utf8 = FALSE)
+	{
+		return ($utf8 === TRUE)
+			? (bool) preg_match('/^[-\pL\pN_]++$/uD', (string) $str)
+			//: (bool) preg_match('/^[-a-z0-9_]++$/iD', (string) $str);
+                        : (bool) preg_match('/^(?=.*\d)(?=.*[@#\-_$%^&+=§!\?])(?=.*[a-z])(?=.*[A-Z])[0-9A-Za-z@#\-_$%^&+=§!\?]{8,20}$/',$str);
+
+	}
+
+        /**
 	 * Checks whether a string consists of digits only (no dots or dashes).
 	 *
 	 * @param   string   input string

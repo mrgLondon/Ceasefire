@@ -391,6 +391,7 @@ $lang = array(
 	'receive' => 'استقبل',
 	'receive_from' => 'استقبل من',
 	'receive_notifications' => 'استقبل إشعارات',
+        'is_active' => 'مستخدم نشط',
 	'recent_reports' => 'أحدث التقارير',
 	'refresh_news_feeds' => 'إنعاش التغذية الإخبارية',
 	'registered_email' => 'البريد الإلكتروني المسجل',
@@ -607,4 +608,5 @@ $lang = array(
 	'your_file' => 'ملفك',
 	'zoom_in' => 'تكبير',
 	'zoom_out' => 'تصغير',
+        'year' => 'السنة',
 );

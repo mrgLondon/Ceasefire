@@ -166,7 +166,7 @@ class User_Model extends Auth_User_Model {
 		if ( isset($post->password) AND
 			(! empty($post->password) OR (empty($post->password) AND ! empty($post->password_again))))
 		{
-			$post->add_rules('password','required','length['.$password_length.']', 'matches[password_again]');
+			$post->add_rules('password','required','length['.$password_length.']', 'matches[password_again]','strong_password[password]');
 		}
 
 		$post->add_rules('role','required','length[3,30]', 'alpha_numeric');

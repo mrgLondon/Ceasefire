@@ -82,6 +82,11 @@
 							<?php print form::dropdown('notify', $yesno_array, $form['notify']); ?>
 						</div>
 
+                                                <div class="row">
+							<h4><?php echo Kohana::lang('ui_main.is_active');?>?</h4>
+							<?php print form::dropdown('active', $yesno_array, $form['active']); ?>
+						</div>
+
 						<div class="row">
 							<h4><a href="#" class="tooltip" title="<?php echo Kohana::lang("tooltips.profile_public_url"); ?>"><?php echo Kohana::lang('ui_main.public_profile_url');?></a></h4>
 							<span style="float:left;"><?php echo url::site().'profile/user/'; ?></span>

@@ -87,6 +87,11 @@
 								<?php print form::dropdown('notify', $yesno_array, $form['notify']); ?>
 							</div>
 
+                                                    	<div class="row">
+							<h4><?php echo Kohana::lang('ui_main.is_active');?>?</h4>
+							<?php print form::dropdown('active', $yesno_array, $form['active']); ?>
+						</div>
+
 							<?php if ($user_id == FALSE) { ?>
 
 							<div class="row">

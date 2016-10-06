@@ -62,7 +62,7 @@ class Profile_Controller extends Admin_Controller
             // If Password field is not blank
             if ( ! empty($post->new_password))
             {
-				$post->add_rules('new_password','required','length['.Kohana::config('auth.password_length').']','matches[password_again]');
+				$post->add_rules('new_password','required','length['.Kohana::config('auth.password_length').']','matches[password_again]','strong_password[new_password]');
             }
 		//for plugins that'd like to know what the user has to say about their profile
 		Event::run('ushahidi_action.profile_add_admin', $post);
@@ -74,6 +74,7 @@ class Profile_Controller extends Admin_Controller
 					$user->name = $post->name;
 					$user->email = $post->email;
 					$user->notify = $post->notify;
+                                        $user->active = $post->active;
 					if ($post->new_password != '')
                     {
                         $user->password = $post->new_password;
@@ -124,6 +125,8 @@ class Profile_Controller extends Admin_Controller
             $form['name'] = $user->name;
             $form['email'] = $user->email;
             $form['notify'] = $user->notify;
+            $form['active'] = $user->active;
+            
         }
 
         $this->template->content->form = $form;

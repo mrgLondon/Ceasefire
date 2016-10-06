@@ -23,6 +23,7 @@ $lang = array(
 		'required' => 'حقل كلمة المرور مطلوب',
 		'alpha_dash' => 'حقل كلمة المرور يجب ان يتكون من حروف و # و @ كرموز و ارقام و _ و / فقط.',
 		'incorrect' => 'كلمة المرور التى ادخلتها لهذا الحساب غير صحيحة. اعد المحاولة.',
+                'strong_password' => 'Password is not strong enough, It must contains capital,small letters, digits, and Special characters',
 	) ,
 	'new_password' => array(
 		'length' => 'كلمة المرور يجب ان لا تقل عن 8 حروف.',
@@ -30,6 +31,7 @@ $lang = array(
 		'matches' => 'برجاء كتابة كلمة المرور فى الحقلين المخصصين لكلمة المرور',
 		'required' => 'حقل كلمة المرور مطلوب',
 		'alpha_dash' => 'حقل كلمة المرور يجب ان يتكون من حروف و # و @ كرموز و ارقام و _ و / فقط.',
+                'strong_password' => 'Password is not strong enough, It must contains capital,small letters, digits, and Special characters',
 	) ,
 	'password' => array(
 		'default' => 'هناك خطأ اثناء عملية الدخول',
@@ -40,6 +42,7 @@ $lang = array(
 		'riverid server down' => 'هناك مشكلة فى السيرفير. أعد المحاولة',
 		'riverid' => '%s',
 		'alpha_dash' => 'حقل كلمة المرور يجب ان يتكون من حروف و # و @ كرموز و ارقام و _ و / فقط.',
+                'strong_password' => 'Password is not strong enough, It must contains capital,small letters, digits, and Special characters',
 	) ,
 	'password_confirm' => array(
 		'matches' => '.حقل تأكيد كلمة السر يجب أن تطابق حقل كلمة المسر',

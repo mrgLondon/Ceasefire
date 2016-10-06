@@ -153,6 +153,7 @@ class Users_Controller extends Admin_Controller {
 				$user->name = $post->name;
 				$user->email = $post->email;
 				$user->notify = $post->notify;
+                                $user->active = $post->active;
 				if ($user_id == NULL)
 				{
 					$user->password = $post->password;
@@ -244,7 +245,7 @@ class Users_Controller extends Admin_Controller {
 						$role = $user_role->name;
 					}
 
-					$form = array('user_id' => $user->id, 'username' => $user->username, 'name' => $user->name, 'email' => $user->email, 'notify' => $user->notify, 'role' => $role);
+					$form = array('user_id' => $user->id, 'username' => $user->username, 'name' => $user->name, 'email' => $user->email, 'notify' => $user->notify, 'active' => $user->active, 'role' => $role);
 				}
 			}
 		}

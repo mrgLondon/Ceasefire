@@ -23,6 +23,7 @@ $lang = array(
 		'required' => 'The password field is required.',
 		'alpha_dash' => 'The password field must have alphabetical characters, the # and @ symbols, numbers, underscores and dashes only',
 		'incorrect' => 'The current password you entered for your account is incorrect. Please try again.',
+                'strong_password' => 'Password is not strong enough, It must contains capital,small letters, digits, and Special characters',
 	) ,
 	'new_password' => array(
 		'length' => 'The password field must be at least 8 characters long.',
@@ -30,7 +31,8 @@ $lang = array(
 		'matches' => 'Please enter the same password in the two password fields.',
 		'required' => 'The password field is required.',
 		'alpha_dash' => 'The password field must have alphabetical characters, the # and @ symbols, numbers, underscores and dashes only',
-	) ,
+                'strong_password' => 'Password is not strong enough, It must contains capital,small letters, digits, and Special characters',
+            ) ,
 	'password' => array(
 		'default' => 'There has been an error attempting to log you in.',
 		'length' => 'The password field must be at least 8 characters long.',
@@ -40,6 +42,7 @@ $lang = array(
 		'riverid server down' => 'The authentication server is down. Please try again later.',
 		'riverid' => '%s',
 		'alpha_dash' => 'The password field must have alphabetical characters, the # and @ symbols, numbers, underscores and dashes only',
+                'strong_password' => 'Password is not strong enough, It must contains capital,small letters, digits, and Special characters',
 	) ,
 	'password_confirm' => array(
 		'matches' => 'The password confirmation field must match the password field.',

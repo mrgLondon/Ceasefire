@@ -402,6 +402,7 @@ $lang = array(
 	'receive' => 'Receive',
 	'receive_from' => 'Receive from',
 	'receive_notifications' => 'Receive Notifications',
+        'is_active' => 'Active User?',
 	'recent_reports' => 'Recent Reports',
 	'refresh_news_feeds' => 'Refresh News Feeds',
 	'registered_email' => 'Registered Email',
@@ -626,4 +627,5 @@ $lang = array(
 	'your_file' => 'Your file',
 	'zoom_in' => 'Zoom In',
 	'zoom_out' => 'Zoom Out',
+        'year' => 'Year',
 );

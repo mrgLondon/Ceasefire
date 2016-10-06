@@ -36,6 +36,7 @@ $lang = array
 	'alpha'         => 'alphabetical',
 	'alpha_numeric' => 'alphabetical and numeric',
 	'alpha_dash'    => 'alphabetical, dash, and underscore',
+        'strong_password' => 'Password is not strong enough, It must contains capital,small letters, digits, and Special characters',
 	'digit'         => 'digit',
 	'numeric'       => 'numeric',
 );

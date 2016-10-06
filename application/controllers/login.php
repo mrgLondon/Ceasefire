@@ -255,7 +255,7 @@ class Login_Controller extends Template_Controller {
 			if ( ! empty($post->password))
 			{
 				$post->add_rules('password','required','length['.kohana::config('auth.password_length').']'
-					,'matches[password_again]');			
+					,'matches[password_again]','strong_password[password]');
 			}
 			//pass the post object to any plugins that care to know.
 			Event::run('ushahidi_action.users_add_login_form', $post);
@@ -390,7 +390,7 @@ class Login_Controller extends Template_Controller {
 			$post->add_rules('token','required');
 			$post->add_rules('changeid','required');
 			$post->add_rules('password','required','length['.Kohana::config('auth.password_length').']');
-			$post->add_rules('password','required','length['.Kohana::config('auth.password_length').']','matches[password_again]');
+			$post->add_rules('password','required','length['.Kohana::config('auth.password_length').']','matches[password_again]','strong_password[password]');
 
 			if ($post->validate())
 			{

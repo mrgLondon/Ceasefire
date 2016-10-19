@@ -159,6 +159,14 @@
 					<h5><?php echo Kohana::lang('ui_main.how_to_report'); ?></h5>
 
 					<div class="how-to-report-methods">
+                                            	
+                                                <!-- Web Form -->
+						<div>
+							<a href="<?php echo url::site().'reports/submit/'; ?>">
+								<?php echo Kohana::lang('ui_main.report_option_4'); ?>
+							</a>
+						</div>
+
 
 						<!-- Phone -->
 						<?php if ( ! empty($phone_array)): ?>
@@ -200,13 +208,6 @@
 							<?php endforeach; ?>
 						</div>
 						<?php endif; ?>
-
-						<!-- Web Form -->
-						<div>
-							<a href="<?php echo url::site().'reports/submit/'; ?>">
-								<?php echo Kohana::lang('ui_main.report_option_4'); ?>
-							</a>
-						</div>
 
 					</div>
 

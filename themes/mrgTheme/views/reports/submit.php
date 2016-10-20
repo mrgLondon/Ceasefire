@@ -67,11 +67,12 @@
 				<div class="report_row hide" id="datetime_edit">
 					<div class="date-box">
 						<h4><?php echo Kohana::lang('ui_main.reports_date'); ?></h4>
-						<?php print form::input('incident_date', $form['incident_date'], ' class="text short"'); ?>
+						<?php print form::input('incident_date', $form['incident_date'], ' class="text short" disabled'); ?>
 						<script type="text/javascript">
 							$().ready(function() {
 								$("#incident_date").datepicker({ 
-									showOn: "both", 
+									showOn: "both",
+                                                                        maxDate: "0",
                                                                         dateFormat: "dd/mm/yy",
 									buttonImage: "<?php echo url::file_loc('img'); ?>media/img/icon-calendar.gif", 
 									buttonImageOnly: true 

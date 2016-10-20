@@ -448,6 +448,7 @@
 			// Date Picker JS
 			$("#incident_date").datepicker({ 
 			    showOn: "both", 
+                            maxDate: "0",
                             dateFormat: "dd/mm/yy",
 			    buttonImage: "<?php echo url::file_loc('img') ?>media/img/icon-calendar.gif", 
 			    buttonImageOnly: true 
@@ -625,7 +626,7 @@
 			// Detect Dropdown Select
 			$("#select_gov").change(function() {
 				var govlonlat = $(this).val().split(",");
-                                var govID = govlonlat[0]
+                                var govID = govlonlat[0];
                                 //alert(govID)
                                 if(govlonlat.length>2)
                                     lonlat = govlonlat.slice(1, 3);
@@ -688,7 +689,7 @@
                         $("#select_city").change(function() {
 				//var lonlat = $(this).val().split(",");
                                 var govlonlat = $(this).val().split(",");
-                                var govID = govlonlat[0]
+                                var govID = govlonlat[0];
                                 //alert(govID)
                                 if(govlonlat.length>2)
                                     lonlat = govlonlat.slice(1, 3);

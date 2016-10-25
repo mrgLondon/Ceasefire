@@ -15,7 +15,9 @@
 
 			<!-- footer credits -->
 			<div class="footer-credits">
-				Powered by the &nbsp;
+                            
+                            <script type="text/javascript" src="https://cdn.ywxi.net/js/1.js" async></script>
+                            Powered by the &nbsp;
 				<a href="http://www.ushahidi.com/">
 					<img src="<?php echo url::file_loc('img'); ?>media/img/footer-logo.png" alt="Ushahidi" class="footer-logo" />
 				</a>

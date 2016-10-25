@@ -130,7 +130,7 @@
 								}?> " id="datetime_edit">
 								<div class="date-box">
 									<h4><?php echo Kohana::lang('ui_main.date');?> <span><?php echo Kohana::lang('ui_main.date_format');?></span></h4>
-									<?php print form::input('incident_date', $form['incident_date'], ' class="text" disabled'); ?>								
+									<?php print form::input('incident_date', $form['incident_date'], ' class="text" readonly'); ?>								
 									<?php print $date_picker_js; ?>				    
 								</div>
 								<div class="time">
@@ -220,7 +220,7 @@
 									<li style="display:block;"><a href="#" class="wider-map"><?php echo Kohana::lang('ui_main.wider_map'); ?></a></li>
 									<li><a href="#" class="taller-map"><?php echo Kohana::lang('ui_main.taller_map'); ?></a></li>
 									<li><a href="#" class="shorter-map"><?php echo Kohana::lang('ui_main.shorter_map'); ?></a></li>
-								</ul>
+								</ul><span>kkkkkkkk</span>
 								<div id="divMap" class="map_holder_reports">
 									<div id="geometryLabelerHolder" class="olControlNoSelect">
 										<div id="geometryLabeler">

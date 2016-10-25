@@ -102,7 +102,7 @@
 							<div class="row <?php if (!($id)) echo "hide"; ?> " id="datetime_edit">
 								<div class="date-box">
 									<h4><?php echo Kohana::lang('ui_main.date');?> <span><?php echo Kohana::lang('ui_main.date_format');?></span></h4>
-									<?php print form::input('incident_date', $form['incident_date'], ' class="text" disabled '); ?>								
+									<?php print form::input('incident_date', $form['incident_date'], ' class="text" readonly '); ?>								
 									<?php print $date_picker_js; ?>				    
 								</div>
 								<div class="time">

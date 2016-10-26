@@ -102,7 +102,19 @@ class Main_Controller extends Template_Controller {
 
 		$this->template->set_global('site_name', $site_name);
 		$this->template->set_global('site_name_style', $site_name_style);
-		$this->template->set_global('site_tagline', Kohana::config('settings.site_tagline'));
+                
+                // Get locale
+		$l = Kohana::config('locale.language.0');
+                
+                $site_tagline = Kohana::config('settings.site_tagline');
+                $pattern = "/\[\(".$l."\)[^\]]*\]/";
+                preg_match_all($pattern, $site_tagline, $matches);
+                $site_tagline_lang = $matches[0][0];
+                if($site_tagline_lang != ''){
+                        $site_tagline = trim(str_replace("]", "", str_replace("[(".$l.")", "", $site_tagline_lang)));
+                }
+                
+		$this->template->set_global('site_tagline', $site_tagline);
 
 		// page_title is a special variable that will be overridden by other controllers to
 		//    change the title bar contents
@@ -171,9 +183,20 @@ class Main_Controller extends Template_Controller {
 		$this->template->content->div_map = $div_map;
 		$this->template->content->div_timeline = $div_timeline;
 
-		// Check if there is a site message
+		// Get locale
+		$l = Kohana::config('locale.language.0');
+
+                // Check if there is a site message
 		$this->template->content->site_message = '';
 		$site_message = trim(Kohana::config('settings.site_message'));
+                $pattern = "/\[\(".$l."\)[^\]]*\]/";
+                preg_match_all($pattern, $site_message, $matches);
+                
+                $site_message_lang = $matches[0][0];
+                if($site_message_lang != ''){
+                    $site_message = trim(str_replace("]", "", str_replace("[(".$l.")", "", $site_message_lang)));
+                }
+
 		if($site_message != '')
 		{
 			// Send the site message to both the header and the main content body
@@ -181,9 +204,6 @@ class Main_Controller extends Template_Controller {
 			$this->template->content->site_message = $site_message;
 			$this->template->header->site_message = $site_message;
 		}
-
-		// Get locale
-		$l = Kohana::config('locale.language.0');
 
         // Get all active top level categories
 		$parent_categories = array();

@@ -179,20 +179,22 @@
 								
 							</ul>
 						</div>
+                                            <!--
 						<h3>
 							<a href="#" class="small-link-button f-clear reset" onclick="removeParameterKey('cff', 'fl-customFields');">
-								<?php echo Kohana::lang('ui_main.clear'); ?>
+								<?php //echo Kohana::lang('ui_main.clear'); ?>
 							</a>
-							<a class="f-title" href="#"><?php echo Kohana::lang('ui_main.custom_fields'); ?></a>
+							<a class="f-title" href="#"><?php //echo Kohana::lang('ui_main.custom_fields'); ?></a>
 						</h3>
 						<div class="f-customFields-box">
-							<?php echo $custom_forms_filter; ?>
+							<?php //echo $custom_forms_filter; ?>
 							
 						</div>
 						<?php
 							// Action, allows plugins to add custom filters
-							Event::run('ushahidi_action.report_filters_ui');
+							///Event::run('ushahidi_action.report_filters_ui');
 						?>
+                                            -->
 					</div>
 					<!-- end #accordion -->
 					

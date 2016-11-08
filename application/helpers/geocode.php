@@ -108,8 +108,9 @@ class geocode_Core {
 	 */
 	static public function google($address) {
 		$payload = FALSE;
-
-		$url = Kohana::config('config.external_site_protocol').'://maps.google.com/maps/api/geocode/json?sensor=false&address='.rawurlencode($address);
+                
+                $newurl = Kohana::config('config.external_site_protocol')."://maps.googleapis.com/maps/api/geocode/json?components=country:iq&language=ar&key=AIzaSyCzBaDR1LV42vBdRUmB-ESQ0XpC1wVbiDM&address=".rawurlencode($address);
+		$url = $newurl;//Kohana::config('config.external_site_protocol').'://maps.google.com/maps/api/geocode/json?sensor=false&address='.rawurlencode($address);
 		$result = FALSE;
 
 		$url_request = new HttpClient($url);

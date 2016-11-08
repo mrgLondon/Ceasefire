@@ -73,10 +73,17 @@ $config['maxZoomLevel'] = "21";
  * Default values allow the user to see the whole world
  */
 
+/* default values
 $config['lonFrom'] = "-180";
 $config['latFrom'] = "-85";
 $config['lonTo'] = "180";
 $config['latTo'] = "85";
+*/
+//Iraq Boundries
+$config['lonFrom'] = "38";
+$config['latFrom'] = "37";
+$config['lonTo'] = "48";
+$config['latTo'] = "29";
 
 
 
@@ -85,4 +92,4 @@ $config['latTo'] = "85";
  * Options are google or nominatim
  */
 
-$config['geocode'] = "nominatim";
+$config['geocode'] = "google";

@@ -109,7 +109,7 @@ class geocode_Core {
 	static public function google($address) {
 		$payload = FALSE;
                 
-                $newurl = Kohana::config('config.external_site_protocol')."://maps.googleapis.com/maps/api/geocode/json?components=country:iq&language=ar&key=AIzaSyCzBaDR1LV42vBdRUmB-ESQ0XpC1wVbiDM&address=".rawurlencode($address);
+                $newurl = Kohana::config('config.external_site_protocol')."://maps.googleapis.com/maps/api/geocode/json?components=country:iq&language=".Kohana::config('locale.language.0')."&key=AIzaSyCzBaDR1LV42vBdRUmB-ESQ0XpC1wVbiDM&address=".rawurlencode($address);
 		$url = $newurl;//Kohana::config('config.external_site_protocol').'://maps.google.com/maps/api/geocode/json?sensor=false&address='.rawurlencode($address);
 		$result = FALSE;
 
@@ -139,8 +139,10 @@ class geocode_Core {
 
 		// Convert the Geocoder's results to an array
 		$all_components = json_decode(json_encode($payload->results), TRUE);
-
-		$result = array_pop($all_components);
+                $geocodesList= array();
+                $disambiguationList= array();
+                foreach ($all_components as $result){
+		//$result = array_pop($all_components);
 		$location = $result['geometry']['location'];
 
 		// Find the country
@@ -160,16 +162,22 @@ class geocode_Core {
 		{
 			$country_name = $result['formatted_address'];
 		}
-
+                
 		$geocodes = array(
 			'country' 			=> $country_name,
 			'country_id' 		=> self::getCountryId($country_name),
 			'location_name' 	=> $result['formatted_address'],
 			'latitude' 			=> $location['lat'],
-			'longitude' 		=> $location['lng']
+			'longitude' 		=> $location['lng'],
+                        'home' => 'byby'
 		);
-
-		return $geocodes;
+                $disambiguationList[]=$geocodes;
+                }
+                //print_r($geocodesList);
+                //var_dump($geocodesList);
+		//return $geocodes;
+                $geocodesList['disambiguation'] = $disambiguationList;
+                return $geocodesList;
 	}
 
 	/**

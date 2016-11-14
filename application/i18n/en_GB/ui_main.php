@@ -628,4 +628,5 @@ $lang = array(
 	'zoom_in' => 'Zoom In',
 	'zoom_out' => 'Zoom Out',
         'year' => 'Year',
+        'select_address' => 'Select Address',
 );

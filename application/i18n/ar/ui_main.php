@@ -609,4 +609,5 @@ $lang = array(
 	'zoom_in' => 'تكبير',
 	'zoom_out' => 'تصغير',
         'year' => 'السنة',
+        'select_address' => 'أختيار العنوان',
 );

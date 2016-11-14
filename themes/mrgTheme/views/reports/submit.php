@@ -217,6 +217,11 @@
 						<div style="clear:both;"></div>
 						<?php print form::input('location_find', '', ' title="'.Kohana::lang('ui_main.location_example').'" class="findtext"'); ?>
 						<input type="button" name="button" id="button" value="<?php echo Kohana::lang('ui_main.find_location'); ?>" class="btn_find" />
+                                                <div class="report_row">
+                                                    <?php echo Kohana::lang('ui_main.select_address'); ?>
+                                                    <span class="required">*</span>
+                                                    <?php print form::dropdown('disambiguationList', '-----------', '0',' onchange="locationDisambiguation()"') ?>
+                                                 </div>   
 						<div id="find_loading" class="report-find-loading"></div>
 						<div style="clear:both;" id="find_text"><?php echo Kohana::lang('ui_main.pinpoint_location'); ?>.</div>
 					</div>
@@ -228,13 +233,13 @@
 						<span class="required">*</span><br />
 						<span class="example"><?php echo Kohana::lang('ui_main.detailed_location_example'); ?></span>
 					</h4>
-					<?php print form::input('location_name', $form['location_name'], ' class="text long"'); ?>
+					<?php print form::input('location_name', $form['location_name'], ' class="text long" disabled=true'); ?>
 				</div>
 
 				<!-- News Fields -->
 				<div id="divNews" class="report_row">
 					<h4><?php echo Kohana::lang('ui_main.reports_news'); ?></h4>
-					
+
 					<?php 
 						// Initialize the counter
 						$i = (empty($form['incident_news'])) ? 1 : 0;

@@ -772,10 +772,30 @@
 		{
 			$('#find_loading').html('<img src="<?php echo url::file_loc('img')."media/img/loading_g.gif"; ?>">');
 			address = $("#location_find").val();
+                        var loc_name = $("#location_name").val();
+                        
+                        //if (loc_name==null || loc_name=="")
+                        {
+                        $("#location_name").val(address);
+                        }
+                        
 			$.post("<?php echo url::site() . 'reports/geocode/' ?>", { address: address },
 				function(data){
 					if (data.status == 'success'){
-						// Clear the map first
+                                                $("#disambiguationList").empty();
+                                                var addressval='0';
+                                                for (var disambigItem in data['disambiguation']){
+                                                    var item = data['disambiguation'][disambigItem];
+                                                    var lat = item.latitude;
+                                                    var long= item.longitude;
+                                                    var country = item.country;
+                                                    var locname = item.location_name;
+                                                    addressval=lat+","+long+","+country;
+                                                    $("#disambiguationList").append( new Option(locname,addressval));
+                                                }
+                                                $("#disambiguationList").val(addressval);
+                                                locationDisambiguation();
+/*						// Clear the map first
 						vlayer.removeFeatures(vlayer.features);
 						$('input[name="geometry[]"]').remove();
 						
@@ -797,6 +817,7 @@
 						$("#latitude").val(data.latitude);
 						$("#longitude").val(data.longitude);
 						$("#location_name").val(data.location_name);
+*/                                                
 					} else {
 						// Alert message to be displayed
 						var alertMessage = address + " not found!\n\n***************************\n" + 
@@ -809,7 +830,37 @@
 				}, "json");
 			return false;
 		}
-		
+                
+		function locationDisambiguation()
+                {
+                    var strval = $("#disambiguationList").find('option:selected').val();
+                    var strText = $("#disambiguationList").find('option:selected').text();
+                    //$("#location_name").val(strText);
+                    var rec = strval.split(",");
+                    var lat = rec[0];
+                    var long = rec[1];
+                    var country = rec[2];
+                    // Clear the map first
+                    vlayer.removeFeatures(vlayer.features);
+                    $('input[name="geometry[]"]').remove();
+                    point = new OpenLayers.Geometry.Point(long, lat);
+                    OpenLayers.Projection.transform(point, proj_4326,proj_900913);
+                    f = new OpenLayers.Feature.Vector(point);
+                    vlayer.addFeatures(f);
+                    // create a new lat/lon object
+                    myPoint = new OpenLayers.LonLat(long, lat);
+                    myPoint.transform(proj_4326, map.getProjectionObject());
+                    // display the map centered on a latitude and longitude
+                    map.panTo(myPoint);
+                    // Update form values
+                    $("#latitude").val(lat);
+                    $("#longitude").val(long);
+                    $("#country_name").val(country);
+                    $("#location_name").prop( "disabled", false );
+                    //$("#incident_zoom").val(19);
+                    map.setCenter(myPoint, 8);
+                }
+                
 		function governorateSwitch(gov_id)
                 {
                 

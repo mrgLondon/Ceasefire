@@ -160,6 +160,8 @@
 						          <li><a href="#" class="taller-map">Taller map</a></li>
 						          <li><a href="#" class="shorter-map">Shorter Map</a></li>
 						        </ul>
+                                                                <script>alert('Hi');</script>
+                                                                <span>kkkkk-report-edit</span>
 								<div id="divMap" class="map_holder_reports">
 									<div id="geometryLabelerHolder" class="olControlNoSelect">
 										<div id="geometryLabeler">

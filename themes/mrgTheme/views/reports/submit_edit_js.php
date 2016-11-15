@@ -622,7 +622,7 @@
 				}
 				selectCtrl.activate();
 			});
-
+/*
 			// Detect Dropdown Select
 			$("#select_gov").change(function() {
 				var govlonlat = $(this).val().split(",");
@@ -720,7 +720,7 @@
 					$("#longitude").attr("value", lonlat[0]);
 				}
 			});
-
+*/
 		});
 		
 		function addFormField(div, field, hidden_id, field_type) {

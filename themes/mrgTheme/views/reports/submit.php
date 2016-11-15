@@ -155,20 +155,22 @@
                             -->
 			</div>
 			<div class="report_right">
-				<?php if (count($governorates) > 1) : ?>
-				<div class="report_row">
-                                    <h4><?php echo Kohana::lang('ui_main.reports_find_location')," : ", 
-                                            form::dropdown('select_gov',$governorates,'', ' class="select" onchange="this.form.post()"'),
-                                            form::dropdown('select_city',$cities,'', ' class="select" ',TRUE); 
+				<?php //if (count($governorates) > 1) : ?>
+<!--				<div class="report_row">
+                                    <h4><?php 
+//                                            echo Kohana::lang('ui_main.reports_find_location')," : ", 
+//                                            form::dropdown('select_gov',$governorates,'', ' class="select" onchange="this.form.post()"'),
+//                                            form::dropdown('select_city',$cities,'', ' class="select" ',TRUE); 
                                     ?>
                                          
                                     </h4>
-				<!--
-                                    <h4><?php echo Kohana::lang('ui_main.reports_find_location'); ?></h4>
-                                    <?php print form::dropdown('select_city',$cities,'', ' class="select" '); ?>
-                                //-->
+				
+                                    <h4><?php //echo Kohana::lang('ui_main.reports_find_location'); ?></h4>
+                                    <?php //print form::dropdown('select_city',$cities,'', ' class="select" '); ?>
+                                
 				</div>
-				<?php endif; ?>
+-->                        
+				<?php //endif; ?>
 				<div class="report_row">
 					<div id="divMap" class="report_map">
 						<div id="geometryLabelerHolder" class="olControlNoSelect">

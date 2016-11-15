@@ -220,7 +220,7 @@
 									<li style="display:block;"><a href="#" class="wider-map"><?php echo Kohana::lang('ui_main.wider_map'); ?></a></li>
 									<li><a href="#" class="taller-map"><?php echo Kohana::lang('ui_main.taller_map'); ?></a></li>
 									<li><a href="#" class="shorter-map"><?php echo Kohana::lang('ui_main.shorter_map'); ?></a></li>
-								</ul><span>kkkkkkkk</span>
+								</ul>
 								<div id="divMap" class="map_holder_reports">
 									<div id="geometryLabelerHolder" class="olControlNoSelect">
 										<div id="geometryLabeler">
@@ -255,6 +255,12 @@
 										<li><a href="#" class="btn_find"><?php echo utf8::strtoupper(Kohana::lang('ui_main.find_location'));?></a></li>
 									</ul>
 								</div>
+                                                                <div class="report_row">
+                                                                    <?php echo Kohana::lang('ui_main.select_address'); ?>
+                                                                    <span class="required">*</span>
+                                                                    <?php print form::dropdown('disambiguationList', '-----------', '0',' onchange="locationDisambiguation()"') ?>
+                                                                 </div>   
+
 								<div id="find_loading" class="incident-find-loading"></div>
 								<div style="clear:both;"><?php echo Kohana::lang('ui_main.pinpoint_location');?>.</div>
 							</div>

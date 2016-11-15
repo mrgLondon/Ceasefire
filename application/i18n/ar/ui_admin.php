@@ -317,4 +317,5 @@ $lang = array(
 	'yes' => 'نعم',
 	'your_search_for' => 'بحثك عن',
         'Flexibledate_field' => 'حقل تاريخ مفصل',
+    	'delete_all' => 'حذف جيع التقارير',
 );

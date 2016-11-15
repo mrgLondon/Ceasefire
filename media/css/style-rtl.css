@@ -30,7 +30,6 @@ h2{
 h3{
     font-size: 150%;
     color: #333333;
-    float: right contour;
 }
 
 h4{
@@ -537,7 +536,7 @@ ul.category-filters li.child{
     display:none;
 }
 ul.category-filters li li {
-	padding-right:20px;
+	padding-left:20px;
 }
 
 div.layers-filters{
@@ -851,9 +850,9 @@ div.report-additional-reports h4 {
     text-transform: capitalize;
 }
 
-div.report-additional-reports h5 { font-size:12px; margin:10px 5px 10px 120px; }
+div.report-additional-reports h5 { font-size:12px; margin:4px 120px 2px 0; }
 div.report-additional-reports .r_date { font-size:10px; background:#f2f2f2 url(../../../media/img/icon_sprite.png) 0px -133px no-repeat; }
-div.report-additional-reports .r_location { font-size:10px; padding:20px 0 3px 18px; color:#828784; }
+div.report-additional-reports .r_location { font-size:10px; padding:3px 0 3px 18px; color:#828784; }
 div.report-details ul.details{ list-style: none; }
 
 div.report-details ul.details li{
@@ -1027,7 +1026,7 @@ div.incident-notation ul li{
 }
 
 .swatch {
-    float:right;
+    float:left;
     height:16px;
     margin-right: 8px;
     width:16px;
@@ -1035,10 +1034,10 @@ div.incident-notation ul li{
 }
 
 .category-title {
-    padding-right: 5px;
+    padding-left: 0;
 }
 .category-icon img {
-	float:right;padding-right:5px;
+	float:left;padding-right:5px;
 }
 
 /* Stylized Forms */
@@ -1109,7 +1108,7 @@ label.error {
     border: 0;    
 }
 
-.report_left{ float:right; width:450px; margin:20px 0 0; padding:0 0 10px; }
+.report_left{ float:left; width:450px; margin:20px 0 0; padding:0 0 10px; }
 .report_left table { width: 100%; }
 .report_left table tr th { text-align: left; }
 
@@ -1962,7 +1961,7 @@ p.r_date {
     color:#908b88;
 }
         
-div.r_description { margin-bottom:5px; margin-top: 10px; width:450px; }
+div.r_description { margin-bottom:5px; width:450px; }
         
 #rb_list-view p.r_location { display:none; }
 
@@ -2002,21 +2001,21 @@ ul.filter-list li { display:block; /* float: right; */ position:relative; }
 ul.filter-list li a { display:block; position:relative; overflow:auto; padding:3px 0 3px 20px; margin-bottom:3px; }
 
 ul.filter-list li a.selected {
-    background:#dbdbdb url("../images/icon_sprite-2.png") 202px -103px no-repeat; 
+    background:#dbdbdb url("../images/icon_sprite-2.png") -22px -103px no-repeat; 
     z-index:120; color:#636363;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px; 
 }
 
-ul.filter-list li a span.item-swatch { display:block; height:16px; width:16px; margin-right: 15px; border:1px solid white; float: right; overflow: hidden; }
-ul.filter-list li a span.item-icon { display:block; float:right; margin-right:8px; height:16px; width:16px; }
+ul.filter-list li a span.item-swatch { display:block; height:16px; width:16px; margin-right: 8px; border:1px solid white; float: right; overflow: hidden; }
+ul.filter-list li a span.item-icon { display:block; float:left; margin-right:8px; height:16px; width:16px; }
 ul.filter-list li a span.item-title { display:block; padding:0 40px 0 26px; /* float: left; */ /* direction: rtl; */}
 ul.filter-list li a span.item-count {
     display:block; 
     /* padding:1px 3px; */ 
     position:absolute; 
-    left:5px;
+    right:0;
     top:4px;
     background:#dbdbdb;
     color:#636363;
@@ -2040,7 +2039,7 @@ ul.filter-list li a.btn-cancel {
 }
 
 /* For child categories because nested UL/LIs are difficult in this case */
-li.report-listing-category-child { padding-right:20px; }
+li.report-listing-category-child { padding-left:20px; }
 
 /* Filter Controls */    
 #filter-controls    { position:relative; padding:15px; margin-top:-2px; /* float: right; */}

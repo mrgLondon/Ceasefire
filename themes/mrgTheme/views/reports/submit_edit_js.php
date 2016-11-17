@@ -855,7 +855,7 @@
                     // Update form values
                     $("#latitude").val(lat);
                     $("#longitude").val(long);
-                    $("#country_name").val(country);
+                    //$("#country_name").val(country);
                     $("#location_name").prop( "disabled", false );
                     //$("#incident_zoom").val(19);
                     map.setCenter(myPoint, 8);

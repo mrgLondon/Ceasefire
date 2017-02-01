@@ -612,6 +612,7 @@ class Reports_Controller extends Main_Controller {
 			$this->template->content->features_count = $incident->geometry->count();
 			$this->template->content->features = $incident->geometry;
 			$this->template->content->incident_id = $incident->id;
+                        $this->template->content->incident_locale = $incident->locale;
 			$this->template->content->incident_title = $incident_title;
 			$this->template->content->incident_description = $incident_description;
 			$this->template->content->incident_location = $incident->location->location_name;
@@ -691,6 +692,7 @@ class Reports_Controller extends Main_Controller {
 		$this->themes->validator_enabled = TRUE;
 		$this->themes->js = new View('reports/view_js');
 		$this->themes->js->incident_id = $incident->id;
+                $this->themes->js->incident_locale = $incident->locale;
 		$this->themes->js->default_map = Kohana::config('settings.default_map');
 		$this->themes->js->default_zoom = Kohana::config('settings.default_zoom');
 		$this->themes->js->latitude = $incident->location->latitude;

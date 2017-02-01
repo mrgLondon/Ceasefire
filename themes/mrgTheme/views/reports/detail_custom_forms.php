@@ -1,14 +1,14 @@
 <?php if (count($form_field_names) > 0) { ?>
 <div class="report-custom-forms-text">
-<table>
+<table class="TFtable">
 <?php
 	foreach ($form_field_names as $field_id => $field_property)
-	{
-		if ($field_property['field_type'] == 8)
+	{       
+		if ($field_propeerty['field_type'] == 8)
 		{
 			echo "</table>";
 
-			if (isset($field_propeerty['field_default']))
+			if (isset($field_property['field_default']))
 			{
 				echo "<div class=\"" . $field_property['field_name'] . "\">";
 			}
@@ -18,20 +18,20 @@
 			}
 
 			echo "<h2>" . $field_property['field_name'] . "</h2>";
-			echo "<table>";
+			echo "<table class='TFtable'>";
 
 			continue;
 		}
 		elseif ($field_property['field_type'] == 9)
 		{
-			echo "</table></div>";
+			//echo "</table></div>";
 			continue;
 		}
 
-		echo "<tr class='custom_field custom_field_{$field_property['field_id']}'>";
 
-		// Get the value for the form field
+                // Get the value for the form field
 		$value = $field_property['field_response'];
+		echo "<tr class='custom_field custom_field_{$field_property['field_id']}'>";
 
 		// Check if a value was fetched
 		if ($value == "" AND empty($show_empty))
@@ -42,18 +42,18 @@
 			// Text Field
 			// Is this a date field?
 			echo "<td><strong>" . html::specialchars($field_property['field_name']) . ": </strong></td>";
-			echo "<td class=\"answer\">$value</td>";
+			echo "<td class=answer>".$value."</td>";
 		}
 		elseif ($field_property['field_type'] == 2)
 		{
 			// TextArea Field
 			echo "<td><strong>" . html::specialchars($field_property['field_name']) . ": </strong></td>";
-			echo "<td class=\"answer\">$value</tr>";
+			echo "<td class=answer>".$value."</td>";
 		}
 		elseif ($field_property['field_type'] == 3)
 		{
 			echo "<td><strong>" . html::specialchars($field_property['field_name']) . ": </strong></td>";
-			echo "<td class=\"answer\">" . date('M d Y', strtotime($value)) . "</td>";
+			echo "<td class=answer>" . date('M d Y', strtotime($value)) . "</td>";
 		}
 		//echo "</div>";
 		echo "</tr>";

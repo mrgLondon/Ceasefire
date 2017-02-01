@@ -103,6 +103,7 @@
 						foreach ($incidents as $incident)
 						{
 							$incident_id = $incident->id;
+                                                        $incident_locale = $incident->locale;
 							$incident_title = $incident->incident_title;
 							$incident_description = text::limit_chars($incident->incident_description, 150, '...');
 							$incident_date = $incident->incident_date;

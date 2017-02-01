@@ -221,7 +221,7 @@ class reports_Core {
 		}
 		
 		$incident->location_id = $location_id;
-		//$incident->locale = $post->locale;
+		$incident->locale = Kohana::config('locale.language');
 		if (isset($post->form_id))
 		{
 			$incident->form_id = $post->form_id;

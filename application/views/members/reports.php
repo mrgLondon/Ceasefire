@@ -88,6 +88,7 @@
 								foreach ($incidents as $incident)
 								{
 									$incident_id = $incident->id;
+                                                                        $incident_locale = $incident->locale;
 									$incident_title = html::escape($incident->incident_title);
 									$incident_description = text::limit_chars(html::strip_tags($incident->incident_description), 150, "...", true);
 									$incident_date = $incident->incident_date;

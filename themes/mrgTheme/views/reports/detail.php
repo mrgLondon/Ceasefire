@@ -101,7 +101,13 @@
 		</div>
 
 		<!-- start report description -->
-		<div class="report-description-text">
+                <?php 
+                    if ($incident_locale==='ar'){
+                        echo '<div class="report-description-text"  style="direction: rtl" >';
+                    }else{
+                        echo '<div class="report-description-text" style="direction: ltr" >';
+                    }
+                ?>
 			<h5><?php echo Kohana::lang('ui_main.reports_description');?></h5>
 			<?php echo html::clean(nl2br($incident_description)); ?>
 			<br/>

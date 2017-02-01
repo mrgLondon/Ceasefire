@@ -19,6 +19,7 @@
 		foreach ($incidents as $incident)
 		{
 			$incident_id = $incident->id;
+                        $incident_locale = $incident->locale;
 			$incident_title = text::limit_chars(html::strip_tags($incident->incident_title), 40, '...', True);
 			$incident_date = $incident->incident_date;
 			$incident_date = date('M j Y', strtotime($incident->incident_date));

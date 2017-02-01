@@ -980,6 +980,26 @@ table.table-list tbody tr td a{
     color: #0099CC;
 }
 
+table.TFtable{
+		width:100%; 
+		border-collapse:collapse; 
+	}
+table.TFtable td{ 
+		padding:7px; border:#000 1px solid;
+	}
+	/* provide some minimal visual accomodation for IE8 and below */
+table.TFtable tr{
+		background: #e4e4e4e6;
+	}
+	/*  Define the background color for all the ODD background rows  */
+table.TFtable tr:nth-child(odd){ 
+		background: #e4e4e4e6;
+	}
+	/*  Define the background color for all the EVEN background rows  */
+table.TFtable tr:nth-child(even){
+		background: #fdfeff;
+	}
+        
 div.location{
     float: right;
     width: 302px;

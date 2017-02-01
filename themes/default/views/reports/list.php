@@ -44,6 +44,7 @@
 				foreach ($incidents as $incident)
 				{
 					$incident_id = $incident->incident_id;
+                                        $incident_locale = $incident->locale;
 					$incident_title = $incident->incident_title;
 					$incident_description = $incident->incident_description;
 					$incident_url = Incident_Model::get_url($incident_id);

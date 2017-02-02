@@ -3,6 +3,12 @@
 <head>
 	<title><?php echo html::specialchars($page_title.$site_name); ?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta property="og:site_name" content="Iraq Ceasefire"/>
+        <meta property="og:title" content="Iraq Ceasefire."/>
+        <meta property="og:image" content="/MainScreenshot.png"/>
+        <meta property="og:type" content="website" />
+        <meta property="og:description" content="You can submit reports of violations occurring anywhere in Iraq. Reports submitted are stripped of any personal identifying information and plotted onto a live map showing the distribution of violations by location and type. Detailed data submitted on the website is used to create a more accurate and up-to-date picture of the situation in Iraq, motivate a more effective national and international response, and strengthen calls for accountability."/>
+
 	<?php echo $header_block; ?>
 	<?php
 	// Action::header_scripts - Additional Inline Scripts from Plugins

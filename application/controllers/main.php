@@ -82,6 +82,13 @@ class Main_Controller extends Template_Controller {
 
 		// Retrieve Default Settings
 		$site_name = Kohana::config('settings.site_name');
+                $l = Kohana::config('locale.language.0');
+                $pattern = "/\[\(".$l."\)[^\]]*\]/";
+                preg_match_all($pattern, $site_name, $matches);
+                $site_name_lang = $matches[0][0];
+                if($site_name_lang != ''){
+                        $site_name = trim(str_replace("]", "", str_replace("[(".$l.")", "", $site_name_lang)));
+                }
 
 		// Get banner image and pass to the header
 		if (Kohana::config('settings.site_banner_id') != NULL)
@@ -128,6 +135,12 @@ class Main_Controller extends Template_Controller {
 		// add copyright info
 		$this->template->footer->site_copyright_statement = '';
 		$site_copyright_statement = trim(Kohana::config('settings.site_copyright_statement'));
+                preg_match_all($pattern, $site_copyright_statement, $matches);
+                $site_copyright_statement_lang = $matches[0][0];
+                if($site_copyright_statement_lang != ''){
+                        $site_copyright_statement = trim(str_replace("]", "", str_replace("[(".$l.")", "", $site_copyright_statement_lang)));
+                }
+
 		if ($site_copyright_statement != '')
 		{
 			$this->template->footer->site_copyright_statement = $site_copyright_statement;
@@ -146,7 +159,7 @@ class Main_Controller extends Template_Controller {
 			$this->template->header->header_nav->loggedin_role = Auth::instance()->get_user()->dashboard();
 			$this->template->header->header_nav->loggedin_user = Auth::instance()->get_user();
 		}
-		$this->template->header->header_nav->site_name = Kohana::config('settings.site_name');
+		$this->template->header->header_nav->site_name = $site_name;
 		
 		Event::add('ushahidi_filter.view_pre_render.layout', array($this, '_pre_render'));
 	}

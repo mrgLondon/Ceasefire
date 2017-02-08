@@ -117,7 +117,16 @@ class Admin_Controller extends Template_Controller {
 		$this->template->admin_name = $this->user->name;
 
 		// Retrieve Default Settings
-		$this->template->site_name = Kohana::config('settings.site_name');
+                $site_name = Kohana::config('settings.site_name');
+                $l = Kohana::config('locale.language.0');
+                $pattern = "/\[\(".$l."\)[^\]]*\]/";
+                preg_match_all($pattern, $site_name, $matches);
+                $site_name_lang = $matches[0][0];
+                if($site_name_lang != ''){
+                        $site_name = trim(str_replace("]", "", str_replace("[(".$l.")", "", $site_name_lang)));
+                }
+
+		$this->template->site_name = $site_name;
 		$this->template->mapstraction = Kohana::config('settings.mapstraction');
 		$this->themes->api_url = Kohana::config('settings.api_url');
 
@@ -153,7 +162,7 @@ class Admin_Controller extends Template_Controller {
 		$this->template->header_nav = $header_nav;
 		$this->template->header_nav->loggedin_user = $this->user;
 		$this->template->header_nav->loggedin_role = $this->user->dashboard();
-		$this->template->header_nav->site_name = Kohana::config('settings.site_name');
+		$this->template->header_nav->site_name = $site_name;
 
 		// Language switcher
 		$this->template->languages = $this->themes->languages();

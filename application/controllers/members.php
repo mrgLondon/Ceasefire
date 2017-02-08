@@ -68,7 +68,15 @@ class Members_Controller extends Template_Controller
 		$this->template->admin_name = $this->user->name;
 		
 		// Retrieve Default Settings
-		$this->template->site_name = Kohana::config('settings.site_name');
+                $site_name = Kohana::config('settings.site_name');
+                $l = Kohana::config('locale.language.0');
+                $pattern = "/\[\(".$l."\)[^\]]*\]/";
+                preg_match_all($pattern, $site_name, $matches);
+                $site_name_lang = $matches[0][0];
+                if($site_name_lang != ''){
+                        $site_name = trim(str_replace("]", "", str_replace("[(".$l.")", "", $site_name_lang)));
+                }
+		$this->template->site_name = $site_name;
 		$this->themes->api_url = Kohana::config('settings.api_url');
 
 		// Javascript Header
@@ -104,7 +112,7 @@ class Members_Controller extends Template_Controller
 			$this->template->header_nav->loggedin_role = Auth::instance()->get_user()->dashboard();
 			$this->template->header_nav->loggedin_user = Auth::instance()->get_user();
 		}
-		$this->template->header_nav->site_name = Kohana::config('settings.site_name');
+		$this->template->header_nav->site_name = $site_name;
 		
 		Event::add('ushahidi_filter.view_pre_render.members_layout', array($this, '_pre_render'));
 	}

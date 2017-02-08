@@ -242,7 +242,7 @@ ul {
 	margin-left: 20px;
 }
 .f-clear {
-	float: right;
+	float: left;
 }
 .report-stats-container {
 	clear: both;

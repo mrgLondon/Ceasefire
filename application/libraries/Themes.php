@@ -470,10 +470,12 @@ class Themes_Core {
 		// Do a case insensitive sort of locales so it comes up in a rough alphabetical order
 
 		natcasesort($locales);
-
+                $languages .= "<h2>";
+                $languages .= Kohana::lang('ui_main.language').'&nbsp:&nbsp';
 		$languages .= form::dropdown('l', $locales, Kohana::config('locale.language'),
 			' onchange="this.form.submit()" ');
 		$languages .= form::close();
+                $languages .= "</h2>";
 		$languages .= "</div>";
 
 		return $languages;

@@ -471,10 +471,15 @@ class Themes_Core {
 
 		natcasesort($locales);
                 $languages .= "<h2>";
-                $languages .= Kohana::lang('ui_main.language').'&nbsp:&nbsp';
+                //$languages .= Kohana::lang('ui_main.language').'&nbsp:&nbsp';
 		$languages .= form::dropdown('l', $locales, Kohana::config('locale.language'),
 			' onchange="this.form.submit()" ');
 		$languages .= form::close();
+                //$languages .= " <button id = 'enbtn' type='button' onclick=\"document.getElementById('l').value= 'en_GB'; document.getElementById('l').onchange(); document.getElementById('arbtn').disabled = false; document.getElementById('enbtn').disabled = true;\"> English</button>";
+                //$languages .= " <button id = 'arbtn' type='button' onclick=\"document.getElementById('l').value= 'ar'; document.getElementById('l').onchange(); document.getElementById('arbtn').disabled = true; document.getElementById('enbtn').disabled = false;\"> العربية</button>";
+
+                $languages .= '<a href="javascript:{}" onclick="document.getElementById(\'l\').value= \'en_GB\'; document.getElementById(\'l\').onchange()">English</a>';
+                $languages .= '&nbsp &nbsp <a href="javascript:{}" onclick="document.getElementById(\'l\').value= \'ar\'; document.getElementById(\'l\').onchange()">العربية</a>';        
                 $languages .= "</h2>";
 		$languages .= "</div>";
 

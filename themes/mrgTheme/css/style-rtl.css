@@ -76,7 +76,7 @@ div#logo{
     border: 0;
     background: #E2E2E2;
     padding: 35px 24px;
-    float: left;
+    float: right;
     margin: 14px 0 0 0;
     max-width: 725px;
 }
@@ -198,7 +198,7 @@ div#underfooter{
 div#searchbox{
     position: absolute;
     top: 0px;
-    right: 0px;
+    left: 0px;
     background: #BEBEBE;
     border: #9F9F9F 2px solid;
     border-top: 0;
@@ -218,16 +218,17 @@ div#loggedin_user_action{
 /* languages */
 div.language-box{
     padding: 0px;
-    margin: 10px 10px 0 15px;
+    margin: 10px 0px 0px 5px;
     float: right;
 }
 
 div.language-box select{
-    width: 150px;
+    width: 10px;
     margin:0;
     padding:1px;
     font-size: 12px;
     color:#00789F;
+    visibility: hidden;
 }
 
 /* searchform */
@@ -273,7 +274,7 @@ div.search-form input.searchbtn{
 
 /* submit incident */
 div.submit-incident{
-    margin: 5px 5px 10px 30px;
+    margin: 5px 5px 10px 10px;
     /*position:absolute;*/
     /*top:0; left:10px;*/
     /*width: 300px;*/

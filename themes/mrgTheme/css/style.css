@@ -220,11 +220,12 @@ div.language-box{
 }
 
 div.language-box select{
-    width:130px;
+    width:10px;
     margin:0;
     padding:1px;
     font-size: 11px;
     color:#00789F;
+    visibility: hidden;
 }
 
 /* searchform */

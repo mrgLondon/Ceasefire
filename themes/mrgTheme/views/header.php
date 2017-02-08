@@ -3,11 +3,13 @@
 <head>
 	<title><?php echo html::specialchars($page_title.$site_name); ?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Iraq Ceasefire"/>
         <meta property="og:title" content="Iraq Ceasefire."/>
-        <meta property="og:image" content="/MainScreenshot.png"/>
-        <meta property="og:type" content="website" />
-        <meta property="og:description" content="You can submit reports of violations occurring anywhere in Iraq. Reports submitted are stripped of any personal identifying information and plotted onto a live map showing the distribution of violations by location and type. Detailed data submitted on the website is used to create a more accurate and up-to-date picture of the situation in Iraq, motivate a more effective national and international response, and strengthen calls for accountability."/>
+        <meta property="og:image" lang="en" content="/MainScreenshot.png"/>
+        <meta property="og:description" lang="en" content="You can submit reports of violations occurring anywhere in Iraq. Reports submitted are stripped of any personal identifying information and plotted onto a live map showing the distribution of violations by location and type. Detailed data submitted on the website is used to create a more accurate and up-to-date picture of the situation in Iraq, motivate a more effective national and international response, and strengthen calls for accountability."/>
+        <meta property="og:image" lang="ar" content="/MainScreenshot_ar.png"/>
+        <meta property="og:description" lang="ar" content="يمكنك الإبلاغ عن انتهاكات تحدث في أي مكان بالعراق. يتم فصل جميع البيانات الشخصية عن جميع التقارير المرسلة ومن ثم يتم تمثيلها على خريطة تفاعلية توضح توزيع تلك الأنتهاكات بناءا علي المكان والنوع. وتستخدم هذه التقارير التفصيلية التي تم إرسالها لرسم صورة دقيقة ومحدثة للوضع في العراق بما يساعد علي تحفيز استجابة أكثر فاعلية على المستويين المحلي والدولي وكذلك تعزيز المطالبات ودعوات المسائلة للمسؤولين عن هذه الأنتهاكات."/>
 
 	<?php echo $header_block; ?>
 	<?php

@@ -762,7 +762,7 @@ class reports_Core {
 		
 		// Split selected parameters on ","
 		// For simplicity, always turn them into arrays even theres just one value
-		$exclude_params = array('c', 'v', 'm', 'mode', 'sw', 'ne', 'start_loc');
+		$exclude_params = array('c', 'v', 'm', 'lang', 'mode', 'sw', 'ne', 'start_loc');
 		foreach ($url_data as $key => $value)
 		{
 			if (in_array($key, $exclude_params) AND ! is_array($value))
@@ -959,6 +959,25 @@ class reports_Core {
 			}
 		}
 		
+		// 
+		// Check if the report language has been specified
+		// 
+		if (isset($url_data['lang']) AND is_array($url_data['lang']))
+		{
+			$lang_status = array();
+			foreach ($url_data['lang'] as $lang)
+			{
+                            $lang_status[] = $lang;
+			}
+			
+			if (count($lang_status) > 0)
+			{
+                            print "i.locale IN ('".implode("','", $lang_status)."')";
+				array_push(self::$params, 
+					"i.locale IN ('".implode("','", $lang_status)."')"
+				);
+			}
+		}
 		//
 		// Check if they're filtering over custom form fields
 		//

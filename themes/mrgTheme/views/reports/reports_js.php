@@ -558,6 +558,7 @@ $(document).ready(function(){
 				  keyToFilter['mode'] = 'filter_link_mode_';
 				  keyToFilter['m']    = 'filter_link_media_';
 				  keyToFilter['v']    = 'filter_link_verification_';
+                                  keyToFilter['lang']    = 'filter_link_language_';
 				  <?php
 				  // Allows us to pre-select the filter when using permalinks
 				  Event::run('ushahidi_action.report_js_keyToFilter');
@@ -787,6 +788,18 @@ $(document).ready(function(){
 			if (verificationStatus.length > 0)
 			{
 				urlParameters["v"] = verificationStatus;
+			}
+			
+			//
+			// Get the Language status
+			var LanguageStatus = [];
+			$.each($(".fl-language li a.selected"), function(i, item){
+				statusVal = item.id.substring("filter_link_language_".length);
+				LanguageStatus.push(statusVal);
+			});
+			if (LanguageStatus.length > 0)
+			{
+				urlParameters["lang"] = LanguageStatus;
 			}
 			
 			//

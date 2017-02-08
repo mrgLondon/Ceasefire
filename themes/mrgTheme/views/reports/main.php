@@ -179,6 +179,29 @@
 								
 							</ul>
 						</div>
+						<h3>
+							<a href="#" class="small-link-button f-clear reset" onclick="removeParameterKey('lang', 'fl-language');">
+								<?php echo Kohana::lang('ui_main.clear'); ?>
+							</a>
+							<a class="f-title" href="#"><?php echo Kohana::lang('ui_main.language'); ?></a>
+						</h3>
+						<div class="f-Language-box">
+							<ul class="filter-list fl-language">
+								<li>
+									<a href="#" id="filter_link_language_en_GB">
+										<span class="item-icon ic-english">&nbsp;</span>
+										<span class="item-title"><?php echo Kohana::lang('ui_main.english'); ?></span>
+									</a>
+								</li>
+								<li>
+									<a href="#" id="filter_link_language_ar">
+										<span class="item-icon ic-arabic">&nbsp;</span>
+										<span class="item-title"><?php echo Kohana::lang('ui_main.arabic'); ?></span>
+									</a>
+								</li>
+								
+							</ul>
+						</div>
                                             <!--
 						<h3>
 							<a href="#" class="small-link-button f-clear reset" onclick="removeParameterKey('cff', 'fl-customFields');">
@@ -190,11 +213,11 @@
 							<?php //echo $custom_forms_filter; ?>
 							
 						</div>
+                                            -->
 						<?php
 							// Action, allows plugins to add custom filters
-							///Event::run('ushahidi_action.report_filters_ui');
+							Event::run('ushahidi_action.report_filters_ui');
 						?>
-                                            -->
 					</div>
 					<!-- end #accordion -->
 					

@@ -630,7 +630,7 @@ div.footermenu{
 div.footermenu ul{
     list-style: none;
     margin: 0 0 10px 0;
-    float: right;
+    /* float: right; */
     direction: rtl;
 }
 

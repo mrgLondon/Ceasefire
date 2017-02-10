@@ -100,7 +100,7 @@ class Settings_Controller extends Admin_Controller {
 			$post->add_rules('site_email', 'email', 'length[4,100]');
 			//$post->add_rules('alerts_email','required', 'email', 'length[4,100]');
 			//$post->add_rules('site_message', 'standard_text');
-			$post->add_rules('site_copyright_statement', 'length[4,600]');
+			//$post->add_rules('site_copyright_statement', 'length[4,600]');
 			$post->add_rules('site_language','required', 'length[2, 5]');
 			//$post->add_rules('site_timezone','required', 'between[10,50]');
 			$post->add_rules('site_contact_page','required','between[0,1]');

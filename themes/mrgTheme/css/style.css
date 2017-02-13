@@ -291,7 +291,56 @@ div.submit-incident a, div.submit-incident a:hover{
     float: right;
 }
 
+div.mrgLogo{
+    padding: 0px 0px 90px 90px;
+    //background-color: #368C00;
+    background-image: url(../images/mrg-logo.jpg);
+    background-position:0px 0px;
+    background-repeat:no-repeat;
+    color: #FFF;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 12px;
+    text-decoration: none;
+    float: right;
+    background-size: 70px 70px;
+}
 
+div.ceasefireLogo{
+    padding: 0px 0px 40px 171px;
+    //background-color: #368C00;
+    background-image: url(../images/Ceasefire_logo_ONLINE.gif);
+    background-position:0px 0px;
+    background-size: 171px 40px;
+    background-repeat:no-repeat;
+    color: #FFF;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 12px;
+    text-decoration: none;
+    float: right;
+}
+
+div.EUflagLogo{
+    padding: 0px 10px 40px 40px;
+    background-image: url(../images/EUflag_low.jpg);
+    background-position:0px 0px;
+    background-size: 40px 30px;
+    background-repeat:no-repeat;
+    color: #FFF;
+    text-transform: uppercase;
+    text-align: justify;
+    float: left;
+}
+
+div.copyrights{
+    text-align:justify;
+    padding: 10px 10px 10px 0px;
+    font-size: 11px;
+    text-decoration: none;
+    float: right;
+    margin: 0px 0px 0px 10px;
+}
 /* mainmenu */
 div#mainmenu{
     background: #C2C2C2;
@@ -649,7 +698,7 @@ div.footer-credits{
     font-size: 70%;
     font-weight: bold;
     text-transform: uppercase;
-    margin: 0 20px 0 0;
+    margin: 0 0px 0 0;
 }
 
 div.footer-credits .footer-logo{
@@ -1670,9 +1719,10 @@ div.red-box { background:#FFD8D9; border:2px solid #990000; }
 
 div.green-box h3, div.red-box h3{
     margin:0;
-    padding:0 0 0 15px; 
+    padding:0 15px 0 15px; 
     font-size:14px;
     color:#555;
+    text-align: justify;
 }
 div.green-box ul, div.red-box ul{
     margin-left:2em;

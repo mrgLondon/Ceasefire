@@ -961,6 +961,7 @@ class Manage_Controller extends Admin_Controller
 	 */
 	private function _parse_feed()
 	{
+                $title_filter = array('iraq','erbil','mosul','baghdad', 'basra', 'kirkuk', 'saladin', 'anbar');
 		// Max number of feeds to keep
 		$max_feeds = 100;
 
@@ -982,13 +983,22 @@ class Manage_Controller extends Admin_Controller
 
 				foreach ($feed_data->get_items(0,50) as $feed_data_item)
 				{
+                                        $grabfeed = false;
 					$title = $feed_data_item->get_title();
 					$link = $feed_data_item->get_link();
 					$description = $feed_data_item->get_description();
 					$date = $feed_data_item->get_date();
 					$latitude = $feed_data_item->get_latitude();
 					$longitude = $feed_data_item->get_longitude();
-
+                                        foreach ($title_filter as $filter_item){
+                                            $pos = stripos($title, $filter_item);
+                                            if($pos!== false){
+                                                    $grabfeed = true;
+                                                    break;
+                                            }
+                                        }
+                                        if(!$grabfeed)
+                                            continue;
 					// Make Sure Title is Set (Atleast)
 					if (isset($title) AND !empty($title ))
 					{

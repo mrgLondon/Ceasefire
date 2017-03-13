@@ -28,6 +28,7 @@ class S_Feeds_Controller extends Controller {
 		// Max number of feeds to keep
 		$max_feeds = 100;
 		
+                $title_filter = array('iraq','erbil','mosul','baghdad', 'basra', 'kirkuk', 'saladin', 'anbar');
 		// Today's Date
 		$today = strtotime('now');
 		
@@ -50,7 +51,17 @@ class S_Feeds_Controller extends Controller {
 				$longitude = $feed_data_item->get_longitude();
 				$categories = $feed_data_item->get_categories(); // HT: new code
 				$category_ids = new stdClass(); // HT: new code
-				
+                                $grabfeed = false;
+                                foreach ($title_filter as $filter_item){
+                                    $pos = stripos($title, $filter_item);
+                                    if($pos!== false){
+                                            $grabfeed = true;
+                                            break;
+                                    }
+                                }
+                                if(!$grabfeed)
+                                    continue;
+	
 				// Make Sure Title is Set (Atleast)
 				if (isset($title) && !empty($title ))
 				{	
